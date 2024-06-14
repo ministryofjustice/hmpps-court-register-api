@@ -33,10 +33,10 @@ generic-service:
     hmpps-court-register-api:
       APPINSIGHTS_INSTRUMENTATIONKEY: "APPINSIGHTS_INSTRUMENTATIONKEY"
     rds-postgresql-instance-output:
-      SPRING_DATASOURCE_USERNAME: "database_username"
-      SPRING_DATASOURCE_PASSWORD: "database_password"
-      DATABASE_NAME: "database_name"
-      DATABASE_ENDPOINT: "rds_instance_endpoint"
+      DB_SERVER: "rds_instance_endpoint"
+      DB_NAME: "database_name"
+      DB_USER: "database_username"
+      DB_PASS: "database_password"
     hmpps-domain-events-topic:
       HMPPS_SQS_TOPICS_DOMAINEVENTS_ARN: "topic_arn"
     sqs-hmpps-audit-secret:
