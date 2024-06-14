@@ -1,6 +1,7 @@
 plugins {
   id("uk.gov.justice.hmpps.gradle-spring-boot") version "6.0.0"
   kotlin("plugin.spring") version "2.0.0"
+  kotlin("plugin.jpa") version "2.0.0"
 }
 
 configurations {
@@ -9,6 +10,33 @@ configurations {
 
 dependencies {
   implementation("org.springframework.boot:spring-boot-starter-webflux")
+  implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+
+  implementation("org.springframework.boot:spring-boot-starter-security")
+  implementation("org.springframework.boot:spring-boot-starter-oauth2-resource-server")
+  implementation("org.springframework.boot:spring-boot-starter-oauth2-client")
+
+  implementation("org.flywaydb:flyway-database-postgresql")
+  runtimeOnly("org.postgresql:postgresql")
+
+  implementation("javax.transaction:javax.transaction-api:1.3")
+  implementation("javax.xml.bind:jaxb-api:2.3.1")
+
+  // AWS
+  implementation("uk.gov.justice.service.hmpps:hmpps-sqs-spring-boot-starter:4.0.0")
+
+  implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.1.0")
+
+  testImplementation("org.springframework.security:spring-security-test")
+  testImplementation("org.wiremock:wiremock-standalone:3.6.0")
+  testImplementation("net.javacrumbs.json-unit:json-unit-assertj:3.0.0")
+  testImplementation("org.testcontainers:localstack:1.19.4")
+  testImplementation("org.testcontainers:postgresql:1.19.4")
+  testImplementation("org.awaitility:awaitility-kotlin:4.2.0")
+  testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactive:1.7.2")
+  testImplementation("io.jsonwebtoken:jjwt-impl:0.11.5")
+  testImplementation("io.jsonwebtoken:jjwt-jackson:0.11.5")
+  testImplementation("org.mockito:mockito-inline:5.2.0")
 }
 
 kotlin {

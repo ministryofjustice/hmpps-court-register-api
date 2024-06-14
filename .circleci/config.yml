@@ -14,8 +14,14 @@ parameters:
 jobs:
   validate:
     executor:
-      name: hmpps/java
-      tag: "21.0"
+      name: hmpps/java_localstack_postgres_with_db_name
+      jdk_tag: "21.0"
+      localstack_tag: "3"
+      services: "sqs,sns"
+      postgres_tag: "16"
+      postgres_username: "admin"
+      postgres_password: "admin_password"
+      postgres_db: "court_register_db"
     steps:
       - checkout
       - restore_cache:

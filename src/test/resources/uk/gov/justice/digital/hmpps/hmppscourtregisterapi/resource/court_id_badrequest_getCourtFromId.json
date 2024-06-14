@@ -1,0 +1,4 @@
+{
+  "status": 400,
+  "developerMessage": "getCourtFromId.courtId: Court ID must be between 2 and 12"
+}

@@ -1,0 +1,59 @@
+{
+  "courtId": "ACCRYC",
+  "courtName": "Accrington Youth Court",
+  "type": {
+    "courtType": "YOUTH",
+    "courtName": "Youth Court"
+  },
+  "active": true,
+  "buildings": [
+    {
+      "id": 1,
+      "courtId": "ACCRYC",
+      "subCode": "SUBT11",
+      "buildingName": "Annex",
+      "street": "West Cross",
+      "locality": "Mumble",
+      "town": "Sheffield",
+      "county": "Yorkshire",
+      "postcode": "SA4 5TH",
+      "country": "UK",
+      "contacts": [
+        {
+          "id": -1,
+          "courtId": "ACCRYC",
+          "buildingId": 1,
+          "type": "TEL",
+          "detail": "555 666666"
+        },
+        {
+          "id": -2,
+          "courtId": "ACCRYC",
+          "buildingId": 1,
+          "type": "EMAIL",
+          "detail": "test@test.com"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "courtId": "ACCRYC",
+      "buildingName": "Main building",
+      "street": "West Cross",
+      "locality": "A Place",
+      "town": "Sheffield",
+      "county": "Yorkshire",
+      "postcode": "SA4 5TT",
+      "country": "UK",
+      "contacts": [
+        {
+          "id": -3,
+          "courtId": "ACCRYC",
+          "buildingId": 2,
+          "type": "TEL",
+          "detail": "555 6666655"
+        }
+      ]
+    }
+  ]
+}

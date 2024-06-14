@@ -1,0 +1,7 @@
+{
+  "id": 2,
+  "courtId": "ACCRYC",
+  "buildingId": 1,
+  "type": "EMAIL",
+  "detail": "test@test.com"
+}

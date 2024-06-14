@@ -4,3 +4,28 @@ server:
 management.endpoint:
   health.cache.time-to-live: 0
   info.cache.time-to-live: 0
+
+oauth:
+  endpoint.url: http://localhost:8090/auth
+
+spring:
+  sql:
+    init:
+      mode: always
+  main:
+    allow-bean-definition-overriding: true
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          public-key-location: classpath:local-public-key.pub
+
+hmpps.sqs:
+  provider: localstack
+  queues:
+    audit:
+      queueName: ${random.uuid}
+  topics:
+    domainevents:
+      arn: arn:aws:sns:eu-west-2:000000000000:${random.uuid}
