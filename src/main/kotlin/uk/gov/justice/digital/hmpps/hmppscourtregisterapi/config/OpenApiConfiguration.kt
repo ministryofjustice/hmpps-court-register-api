@@ -16,14 +16,14 @@ class OpenApiConfiguration(buildProperties: BuildProperties) {
   fun customOpenAPI(): OpenAPI = OpenAPI()
     .servers(
       listOf(
-        Server().url("https://court-register.hmpps.service.justice.gov.uk").description("Prod"),
-        Server().url("https://court-register-preprod.hmpps.service.justice.gov.uk").description("PreProd"),
-        Server().url("https://court-register-dev.hmpps.service.justice.gov.uk").description("Development"),
+        Server().url("https://hmpps-court-register-api.hmpps.service.justice.gov.uk").description("Prod"),
+        Server().url("https://hmpps-court-register-api-preprod.hmpps.service.justice.gov.uk").description("PreProd"),
+        Server().url("https://hmpps-court-register-api-dev.hmpps.service.justice.gov.uk").description("Development"),
         Server().url("http://localhost:8080").description("Local"),
       ),
     )
     .info(
-      Info().title("Court Register")
+      Info().title("Court Register API")
         .version(version)
         .description("Register providing UK Court Information")
         .contact(Contact().name("HMPPS Digital Studio").email("feedback@digital.justice.gov.uk")),
