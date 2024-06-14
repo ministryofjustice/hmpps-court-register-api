@@ -1,0 +1,10 @@
+{
+  "courtId": "ACCRYC",
+  "courtName": "Updated Court",
+  "courtDescription": "a description",
+  "type": {
+    "courtType": "YOUTH",
+    "courtName": "Youth Court"
+  },
+  "active": false
+}

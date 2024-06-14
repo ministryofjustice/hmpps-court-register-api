@@ -1,0 +1,18 @@
+oauth:
+  endpoint.url: http://localhost:8090/auth
+
+aws:
+  provider: localstack
+
+hmpps.sqs:
+  provider: localstack
+  queues:
+    audit:
+      queueName: hmpps_audit_queue
+  topics:
+    domainevents:
+      arn: arn:aws:sns:eu-west-2:000000000000:hmpps_domain_events
+
+spring:
+  jpa:
+    show-sql: true

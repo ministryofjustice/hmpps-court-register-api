@@ -1,0 +1,10 @@
+[
+  {
+    "courtType": "CROWN",
+    "courtName": "Crown Court"
+  },
+  {
+    "courtType": "YOUTH",
+    "courtName": "Youth Court"
+  }
+]

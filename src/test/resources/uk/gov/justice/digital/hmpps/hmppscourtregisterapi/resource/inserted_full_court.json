@@ -1,0 +1,32 @@
+{
+  "courtId": "XXXXAA",
+  "courtName": "Full Court Insert",
+  "courtDescription": "A Full court",
+  "type": {
+    "courtType": "YOUTH",
+    "courtName": "Youth Court"
+  },
+  "active": true,
+  "buildings": [
+    {
+      "id": 1,
+      "courtId": "XXXXAA",
+      "buildingName": "Annex",
+      "street": "West Cross",
+      "locality": "Mumble",
+      "town": "Sheffield",
+      "county": "Yorkshire",
+      "postcode": "SA4 5TH",
+      "country": "UK",
+      "contacts": [
+        {
+          "id": 1,
+          "courtId": "XXXXAA",
+          "buildingId": 1,
+          "type": "TEL",
+          "detail": "5555 666666"
+        }
+      ]
+    }
+  ]
+}
