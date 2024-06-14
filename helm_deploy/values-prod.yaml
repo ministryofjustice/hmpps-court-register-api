@@ -3,7 +3,7 @@
 
 generic-service:
   ingress:
-    host: hmpps-court-register-api.hmpps.service.justice.gov.uk
+    host: court-register-api.hmpps.service.justice.gov.uk
 
 
   env:
