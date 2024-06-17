@@ -36,11 +36,11 @@ class CourtBuildingMaintenanceResource(
   private val snsService: SnsService,
   private val auditService: AuditService,
 ) {
-  @PreAuthorize("hasRole('ROLE_MAINTAIN_REF_DATA') and hasAuthority('SCOPE_write')")
+  @PreAuthorize("hasRole('ROLE_COURT_REGISTER__COURT_DETAILS__RW')")
   @Operation(
     summary = "Update specified building details",
-    description = "Updates building information, role required is MAINTAIN_REF_DATA",
-    security = [SecurityRequirement(name = "MAINTAIN_REF_DATA", scopes = ["write"])],
+    description = "Updates building information, role required is ROLE_COURT_REGISTER__COURT_DETAILS__RW",
+    security = [SecurityRequirement(name = "ROLE_COURT_REGISTER__COURT_DETAILS__RW")],
     requestBody = io.swagger.v3.oas.annotations.parameters.RequestBody(
       content = [
         Content(
@@ -98,13 +98,13 @@ class CourtBuildingMaintenanceResource(
     return updatedBuilding
   }
 
-  @PreAuthorize("hasRole('ROLE_MAINTAIN_REF_DATA') and hasAuthority('SCOPE_write')")
+  @PreAuthorize("hasRole('ROLE_COURT_REGISTER__COURT_DETAILS__RW')")
   @PostMapping("/id/{courtId}/buildings")
   @ResponseStatus(HttpStatus.CREATED)
   @Operation(
     summary = "Add a new building to a court",
-    description = "Adds a new building to court, role required is MAINTAIN_REF_DATA",
-    security = [SecurityRequirement(name = "MAINTAIN_REF_DATA", scopes = ["write"])],
+    description = "Adds a new building to court, role required is ROLE_COURT_REGISTER__COURT_DETAILS__RW",
+    security = [SecurityRequirement(name = "ROLE_COURT_REGISTER__COURT_DETAILS__RW")],
     requestBody = io.swagger.v3.oas.annotations.parameters.RequestBody(
       content = [
         Content(
@@ -164,11 +164,11 @@ class CourtBuildingMaintenanceResource(
     return newBuilding
   }
 
-  @PreAuthorize("hasRole('ROLE_MAINTAIN_REF_DATA') and hasAuthority('SCOPE_write')")
+  @PreAuthorize("hasRole('ROLE_COURT_REGISTER__COURT_DETAILS__RW')")
   @Operation(
     summary = "Delete specified building",
-    description = "Deletes building information, role required is MAINTAIN_REF_DATA",
-    security = [SecurityRequirement(name = "MAINTAIN_REF_DATA", scopes = ["write"])],
+    description = "Deletes building information, role required is ROLE_COURT_REGISTER__COURT_DETAILS__RW",
+    security = [SecurityRequirement(name = "ROLE_COURT_REGISTER__COURT_DETAILS__RW")],
     responses = [
       ApiResponse(
         responseCode = "200",

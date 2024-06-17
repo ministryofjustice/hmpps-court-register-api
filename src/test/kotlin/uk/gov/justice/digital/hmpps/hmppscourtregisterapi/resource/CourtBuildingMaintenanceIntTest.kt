@@ -21,8 +21,7 @@ class CourtBuildingMaintenanceIntTest : IntegrationTestBase() {
         .contentType(MediaType.APPLICATION_JSON)
         .headers(
           setAuthorisation(
-            roles = listOf("ROLE_MAINTAIN_REF_DATA"),
-            scopes = listOf("write"),
+            roles = listOf("ROLE_COURT_REGISTER__COURT_DETAILS__RW"),
             user = "bobby.beans",
           ),
         )
@@ -58,8 +57,7 @@ class CourtBuildingMaintenanceIntTest : IntegrationTestBase() {
         .contentType(MediaType.APPLICATION_JSON)
         .headers(
           setAuthorisation(
-            roles = listOf("ROLE_MAINTAIN_REF_DATA"),
-            scopes = listOf("write"),
+            roles = listOf("ROLE_COURT_REGISTER__COURT_DETAILS__RW"),
             user = "bobby.beans",
           ),
         )
@@ -94,8 +92,7 @@ class CourtBuildingMaintenanceIntTest : IntegrationTestBase() {
         .contentType(MediaType.APPLICATION_JSON)
         .headers(
           setAuthorisation(
-            roles = listOf("ROLE_MAINTAIN_REF_DATA"),
-            scopes = listOf("write"),
+            roles = listOf("ROLE_COURT_REGISTER__COURT_DETAILS__RW"),
             user = "bobby.beans",
           ),
         )
@@ -124,8 +121,7 @@ class CourtBuildingMaintenanceIntTest : IntegrationTestBase() {
         .contentType(MediaType.APPLICATION_JSON)
         .headers(
           setAuthorisation(
-            roles = listOf("ROLE_MAINTAIN_REF_DATA"),
-            scopes = listOf("write"),
+            roles = listOf("ROLE_COURT_REGISTER__COURT_DETAILS__RW"),
             user = "bobby.beans",
           ),
         )
@@ -154,8 +150,7 @@ class CourtBuildingMaintenanceIntTest : IntegrationTestBase() {
         .contentType(MediaType.APPLICATION_JSON)
         .headers(
           setAuthorisation(
-            roles = listOf("ROLE_MAINTAIN_REF_DATA"),
-            scopes = listOf("write"),
+            roles = listOf("ROLE_COURT_REGISTER__COURT_DETAILS__RW"),
             user = "bobby.beans",
           ),
         )
@@ -184,8 +179,7 @@ class CourtBuildingMaintenanceIntTest : IntegrationTestBase() {
         .contentType(MediaType.APPLICATION_JSON)
         .headers(
           setAuthorisation(
-            roles = listOf("ROLE_MAINTAIN_REF_DATA"),
-            scopes = listOf("write"),
+            roles = listOf("ROLE_COURT_REGISTER__COURT_DETAILS__RW"),
             user = "bobby.beans",
           ),
         )
