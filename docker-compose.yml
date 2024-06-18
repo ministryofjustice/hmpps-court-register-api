@@ -1,17 +1,32 @@
-version: "3"
 services:
-  hmpps-court-register-api:
-    build:
-      context: .
-    network_mode: "host"
-    container_name: hmpps-court-register-api
+  court-register-db:
+    image: postgres:16
+    networks:
+      - hmpps
+    container_name: court-register-db
+    restart: always
     ports:
-      - "8081:8080"
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8080/health/ping"]
+      - "5432:5432"
     environment:
-      - SERVER_PORT=8080
-      - SPRING_PROFILES_ACTIVE=dev
+      - POSTGRES_PASSWORD=admin_password
+      - POSTGRES_USER=admin
+      - POSTGRES_DB=court_register_db
+
+  localstack:
+    image: localstack/localstack:3
+    networks:
+      - hmpps
+    container_name: localstack
+    ports:
+      - "4566:4566"
+      - 4510-4559:4510-4559
+    environment:
+      - SERVICES=sns,sqs
+      - DEBUG=${DEBUG:-0}
+      - DEFAULT_REGION=eu-west-2
+    volumes:
+      - "${LOCALSTACK_VOLUME_DIR:-./volume}:/var/lib/localstack"
+      - "/var/run/docker.sock:/var/run/docker.sock"
 
 networks:
   hmpps:
