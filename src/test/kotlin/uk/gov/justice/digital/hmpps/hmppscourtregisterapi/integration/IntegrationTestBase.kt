@@ -40,7 +40,6 @@ abstract class IntegrationTestBase {
 
   internal val auditSqsClient by lazy { auditQueue.sqsClient }
   internal val auditQueueUrl: String by lazy { auditQueue.queueUrl }
-  internal val auditQueueName: String by lazy { auditQueue.queueName }
 
   init {
     // Resolves an issue where Wiremock keeps previous sockets open from other tests causing connection resets
@@ -56,8 +55,7 @@ abstract class IntegrationTestBase {
   internal fun setAuthorisation(
     user: String = "court-reg-client",
     roles: List<String> = listOf(),
-    scopes: List<String> = listOf(),
-  ): (HttpHeaders) -> Unit = jwtAuthHelper.setAuthorisation(user, roles, scopes)
+  ): (HttpHeaders) -> Unit = jwtAuthHelper.setAuthorisation(user, roles)
 
   companion object {
     private val pgContainer = PostgresContainer.instance

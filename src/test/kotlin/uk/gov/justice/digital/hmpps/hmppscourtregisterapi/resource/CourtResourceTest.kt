@@ -114,20 +114,10 @@ class CourtResourceTest : IntegrationTestBase() {
       webTestClient.put()
         .uri("/court-maintenance/id/ACCRYC")
         .accept(MediaType.APPLICATION_JSON)
-        .headers(setAuthorisation(roles = listOf("ROLE_DUMMY"), scopes = listOf("write")))
+        .headers(setAuthorisation(roles = listOf("ROLE_DUMMY")))
         .body(BodyInserters.fromValue(UpdateCourtDto("Updated Court", "a description", "YOUTH", false)))
         .exchange()
         .expectStatus().isForbidden
-    }
-
-    @Test
-    fun `correct scopes are needed to update court data`() {
-      webTestClient.put()
-        .uri("/court-maintenance/id/ACCRYC")
-        .accept(MediaType.APPLICATION_JSON)
-        .headers(setAuthorisation(roles = listOf("ROLE_MAINTAIN_REF_DATA"), scopes = listOf("read")))
-        .body(BodyInserters.fromValue(UpdateCourtDto("Updated Court", "a description", "YOUTH", false)))
-        .exchange().expectStatus().isForbidden
     }
 
     @Test
@@ -141,8 +131,7 @@ class CourtResourceTest : IntegrationTestBase() {
         .accept(MediaType.APPLICATION_JSON)
         .headers(
           setAuthorisation(
-            roles = listOf("ROLE_MAINTAIN_REF_DATA"),
-            scopes = listOf("write"),
+            roles = listOf("ROLE_COURT_REGISTER__COURT_DETAILS__RW"),
             user = "bobby.beans",
           ),
         )
@@ -170,7 +159,7 @@ class CourtResourceTest : IntegrationTestBase() {
       webTestClient.put()
         .uri("/court-maintenance/id/ACCRYC")
         .accept(MediaType.APPLICATION_JSON)
-        .headers(setAuthorisation(roles = listOf("ROLE_MAINTAIN_REF_DATA"), scopes = listOf("write")))
+        .headers(setAuthorisation(roles = listOf("ROLE_COURT_REGISTER__COURT_DETAILS__RW")))
         .body(
           BodyInserters.fromValue(
             mapOf(
@@ -203,8 +192,7 @@ class CourtResourceTest : IntegrationTestBase() {
         .accept(MediaType.APPLICATION_JSON)
         .headers(
           setAuthorisation(
-            roles = listOf("ROLE_MAINTAIN_REF_DATA"),
-            scopes = listOf("write"),
+            roles = listOf("ROLE_COURT_REGISTER__COURT_DETAILS__RW"),
             user = "bobby.beans",
           ),
         )
@@ -272,8 +260,7 @@ class CourtResourceTest : IntegrationTestBase() {
         .accept(MediaType.APPLICATION_JSON)
         .headers(
           setAuthorisation(
-            roles = listOf("ROLE_MAINTAIN_REF_DATA"),
-            scopes = listOf("write"),
+            roles = listOf("ROLE_COURT_REGISTER__COURT_DETAILS__RW"),
             user = "bobby.beans",
           ),
         )
@@ -312,7 +299,7 @@ class CourtResourceTest : IntegrationTestBase() {
       webTestClient.post()
         .uri("/court-maintenance")
         .accept(MediaType.APPLICATION_JSON)
-        .headers(setAuthorisation(roles = listOf("ROLE_MAINTAIN_REF_DATA"), scopes = listOf("write")))
+        .headers(setAuthorisation(roles = listOf("ROLE_COURT_REGISTER__COURT_DETAILS__RW")))
         .body(
           BodyInserters.fromValue(
             mapOf(
@@ -409,7 +396,7 @@ class CourtResourceTest : IntegrationTestBase() {
       webTestClient.put()
         .uri("/court-maintenance/id/ACCRYC/buildings/1")
         .accept(MediaType.APPLICATION_JSON)
-        .headers(setAuthorisation(roles = listOf("ROLE_DUMMY"), scopes = listOf("write")))
+        .headers(setAuthorisation(roles = listOf("ROLE_DUMMY")))
         .body(
           BodyInserters.fromValue(
             UpdateBuildingDto(
@@ -427,30 +414,6 @@ class CourtResourceTest : IntegrationTestBase() {
         )
         .exchange()
         .expectStatus().isForbidden
-    }
-
-    @Test
-    fun `correct scopes are needed to update building data`() {
-      webTestClient.put()
-        .uri("/court-maintenance/id/ACCRYC/buildings/1")
-        .accept(MediaType.APPLICATION_JSON)
-        .headers(setAuthorisation(roles = listOf("ROLE_MAINTAIN_REF_DATA"), scopes = listOf("read")))
-        .body(
-          BodyInserters.fromValue(
-            UpdateBuildingDto(
-              subCode = "SUBT11",
-              street = "West Cross",
-              buildingName = "Annex",
-              locality = "Mumble",
-              town = "Sheffield",
-              postcode = "SA4 5TH",
-              county = "Yorkshire",
-              country = "UK",
-              active = true,
-            ),
-          ),
-        )
-        .exchange().expectStatus().isForbidden
     }
 
     @Test
@@ -480,8 +443,7 @@ class CourtResourceTest : IntegrationTestBase() {
         .accept(MediaType.APPLICATION_JSON)
         .headers(
           setAuthorisation(
-            roles = listOf("ROLE_MAINTAIN_REF_DATA"),
-            scopes = listOf("write"),
+            roles = listOf("ROLE_COURT_REGISTER__COURT_DETAILS__RW"),
             user = "bobby.beans",
           ),
         )
@@ -545,8 +507,7 @@ class CourtResourceTest : IntegrationTestBase() {
         .accept(MediaType.APPLICATION_JSON)
         .headers(
           setAuthorisation(
-            roles = listOf("ROLE_MAINTAIN_REF_DATA"),
-            scopes = listOf("write"),
+            roles = listOf("ROLE_COURT_REGISTER__COURT_DETAILS__RW"),
             user = "bobby.beans",
           ),
         )
@@ -610,8 +571,7 @@ class CourtResourceTest : IntegrationTestBase() {
         .accept(MediaType.APPLICATION_JSON)
         .headers(
           setAuthorisation(
-            roles = listOf("ROLE_MAINTAIN_REF_DATA"),
-            scopes = listOf("write"),
+            roles = listOf("ROLE_COURT_REGISTER__COURT_DETAILS__RW"),
             user = "bobby.beans",
           ),
         )
@@ -677,8 +637,7 @@ class CourtResourceTest : IntegrationTestBase() {
         .accept(MediaType.APPLICATION_JSON)
         .headers(
           setAuthorisation(
-            roles = listOf("ROLE_MAINTAIN_REF_DATA"),
-            scopes = listOf("write"),
+            roles = listOf("ROLE_COURT_REGISTER__COURT_DETAILS__RW"),
             user = "bobby.beans",
           ),
         )
@@ -746,8 +705,7 @@ class CourtResourceTest : IntegrationTestBase() {
         .accept(MediaType.APPLICATION_JSON)
         .headers(
           setAuthorisation(
-            roles = listOf("ROLE_MAINTAIN_REF_DATA"),
-            scopes = listOf("write"),
+            roles = listOf("ROLE_COURT_REGISTER__COURT_DETAILS__RW"),
             user = "bobby.beans",
           ),
         )
@@ -815,8 +773,7 @@ class CourtResourceTest : IntegrationTestBase() {
         .accept(MediaType.APPLICATION_JSON)
         .headers(
           setAuthorisation(
-            roles = listOf("ROLE_MAINTAIN_REF_DATA"),
-            scopes = listOf("write"),
+            roles = listOf("ROLE_COURT_REGISTER__COURT_DETAILS__RW"),
             user = "bobby.beans",
           ),
         )
@@ -867,20 +824,10 @@ class CourtResourceTest : IntegrationTestBase() {
       webTestClient.put()
         .uri("/court-maintenance/id/ACCRYC/buildings/1/contacts/1")
         .accept(MediaType.APPLICATION_JSON)
-        .headers(setAuthorisation(roles = listOf("ROLE_DUMMY"), scopes = listOf("write")))
+        .headers(setAuthorisation(roles = listOf("ROLE_DUMMY")))
         .body(BodyInserters.fromValue(UpdateContactDto("TEL", "5555 666666")))
         .exchange()
         .expectStatus().isForbidden
-    }
-
-    @Test
-    fun `correct scopes are needed to update contact data`() {
-      webTestClient.put()
-        .uri("/court-maintenance/id/ACCRYC/buildings/1/contacts/1")
-        .accept(MediaType.APPLICATION_JSON)
-        .headers(setAuthorisation(roles = listOf("ROLE_MAINTAIN_REF_DATA"), scopes = listOf("read")))
-        .body(BodyInserters.fromValue(UpdateContactDto("TEL", "5555 666666")))
-        .exchange().expectStatus().isForbidden
     }
 
     @Test
@@ -909,8 +856,7 @@ class CourtResourceTest : IntegrationTestBase() {
         .accept(MediaType.APPLICATION_JSON)
         .headers(
           setAuthorisation(
-            roles = listOf("ROLE_MAINTAIN_REF_DATA"),
-            scopes = listOf("write"),
+            roles = listOf("ROLE_COURT_REGISTER__COURT_DETAILS__RW"),
             user = "bobby.beans",
           ),
         )
@@ -959,8 +905,7 @@ class CourtResourceTest : IntegrationTestBase() {
         .accept(MediaType.APPLICATION_JSON)
         .headers(
           setAuthorisation(
-            roles = listOf("ROLE_MAINTAIN_REF_DATA"),
-            scopes = listOf("write"),
+            roles = listOf("ROLE_COURT_REGISTER__COURT_DETAILS__RW"),
             user = "bobby.beans",
           ),
         )
@@ -1002,8 +947,7 @@ class CourtResourceTest : IntegrationTestBase() {
         .accept(MediaType.APPLICATION_JSON)
         .headers(
           setAuthorisation(
-            roles = listOf("ROLE_MAINTAIN_REF_DATA"),
-            scopes = listOf("write"),
+            roles = listOf("ROLE_COURT_REGISTER__COURT_DETAILS__RW"),
             user = "bobby.beans",
           ),
         )
@@ -1059,8 +1003,7 @@ class CourtResourceTest : IntegrationTestBase() {
         .accept(MediaType.APPLICATION_JSON)
         .headers(
           setAuthorisation(
-            roles = listOf("ROLE_MAINTAIN_REF_DATA"),
-            scopes = listOf("write"),
+            roles = listOf("ROLE_COURT_REGISTER__COURT_DETAILS__RW"),
             user = "bobby.beans",
           ),
         )
