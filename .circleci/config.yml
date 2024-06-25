@@ -10,12 +10,15 @@ parameters:
   releases-slack-channel:
     type: string
     default: legacy-replacement-releases
+  jdk-tag:
+    type: string
+    default: "21.0"
 
 jobs:
   validate:
     executor:
       name: hmpps/java_localstack_postgres_with_db_name
-      jdk_tag: "21.0"
+      jdk_tag: << pipeline.parameters.jdk-tag >>
       localstack_tag: "3"
       services: "sqs,sns"
       postgres_tag: "16"
@@ -119,7 +122,7 @@ workflows:
     jobs:
       - hmpps/gradle_owasp_dependency_check:
           cache_key: "v2_0"
-          jdk_tag: "21.0"
+          jdk_tag: << pipeline.parameters.jdk-tag >>
           slack_channel: << pipeline.parameters.alerts-slack-channel >>
           context:
             - hmpps-common-vars
@@ -128,7 +131,7 @@ workflows:
           context:
             - hmpps-common-vars
       - hmpps/veracode_pipeline_scan:
-          jdk_tag: "21.0"
+          jdk_tag: << pipeline.parameters.jdk-tag >>
           slack_channel: << pipeline.parameters.alerts-slack-channel >>
           context:
             - veracode-credentials
