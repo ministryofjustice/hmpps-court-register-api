@@ -9,7 +9,8 @@ import org.springframework.web.reactive.function.client.WebClient
 
 @Configuration
 class WebClientConfiguration(
-  @Value("\${sdrs.api.url}") private val standingDataReferenceServiceApiUrl: String,) {
+  @Value("\${sdrs.api.url}") private val standingDataReferenceServiceApiUrl: String,
+) {
 
   @Bean
   fun standingDataReferenceServiceApiWebClient(builder: WebClient.Builder): WebClient {
@@ -24,5 +25,4 @@ class WebClientConfiguration(
     headers.add(HttpHeaders.ACCEPT, "application/json")
     return headers
   }
-
 }
