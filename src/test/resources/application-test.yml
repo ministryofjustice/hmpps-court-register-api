@@ -33,3 +33,7 @@ hmpps.sqs:
   topics:
     domainevents:
       arn: arn:aws:sns:eu-west-2:000000000000:${random.uuid}
+
+sdrs:
+  api:
+    url: http://localhost:8332
