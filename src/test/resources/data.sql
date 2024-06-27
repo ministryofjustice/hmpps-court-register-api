@@ -894,7 +894,8 @@ INSERT INTO court (id, court_name, court_description, "type", active, created_da
 INSERT INTO court (id, court_name, court_description, "type", active, created_datetime, last_updated_datetime) VALUES('LEAMCT', 'Leamington Spa County Court', NULL, 'COU', true, NOW(), NOW());
 INSERT INTO court (id, court_name, court_description, "type", active, created_datetime, last_updated_datetime) VALUES('SOUTCT', 'Southport County Court', NULL, 'COU', true, NOW(), NOW());
 
-INSERT into BUILDING (COURT_CODE, BUILDING_NAME, STREET, LOCALITY, TOWN, COUNTY, POSTCODE, COUNTRY, CREATED_DATETIME, LAST_UPDATED_DATETIME ) VALUES ('ABGVMC', null, 'Tudor Street', null, 'Abergavenny', 'Monmouthshire', 'NP7 5DL', 'Wales', NOW(), NOW() );
+INSERT into BUILDING (COURT_CODE, BUILDING_NAME, STREET, LOCALITY, TOWN, COUNTY, POSTCODE, COUNTRY, CREATED_DATETIME, LAST_UPDATED_DATETIME ) VALUES
+                     ('ABGVMC',   null, 'Tudor Street', null, 'Abergavenny', 'Monmouthshire', 'NP7 5DL', 'Wales', NOW(), NOW() );
 INSERT into BUILDING (COURT_CODE, BUILDING_NAME, STREET, LOCALITY, TOWN, COUNTY, POSTCODE, COUNTRY, CREATED_DATETIME, LAST_UPDATED_DATETIME ) VALUES ('ABDSUM', null, null, null, null, null, null, null, NOW(), NOW() );
 INSERT into BUILDING (COURT_CODE, BUILDING_NAME, STREET, LOCALITY, TOWN, COUNTY, POSTCODE, COUNTRY, CREATED_DATETIME, LAST_UPDATED_DATETIME ) VALUES ('ABRYMC', 'Swyddfa''r Sir', 'Marine Terrace', null, 'Aberystwyth', 'Ceredigion', 'SY23 2DE', 'Wales', NOW(), NOW() );
 INSERT into BUILDING (COURT_CODE, BUILDING_NAME, STREET, LOCALITY, TOWN, COUNTY, POSTCODE, COUNTRY, CREATED_DATETIME, LAST_UPDATED_DATETIME ) VALUES ('ABRYYC', 'Swyddfa''r Sir', 'Marine Terrace', null, 'Aberystwyth', 'Ceredigion', 'SY23 2DE', 'Wales', NOW(), NOW() );

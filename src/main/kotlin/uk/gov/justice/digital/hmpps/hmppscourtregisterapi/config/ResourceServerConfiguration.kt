@@ -28,6 +28,7 @@ class ResourceServerConfiguration {
           "/v3/api-docs", "/swagger-ui.html",
           "/swagger-resources", "/swagger-resources/configuration/ui", "/swagger-resources/configuration/security",
           "/courts/**", "/some-url-not-found",
+          "/admin/refresh-data"
         ).forEach { authorize(it, permitAll) }
         authorize(anyRequest, authenticated)
       }
