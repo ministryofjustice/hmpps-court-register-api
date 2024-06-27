@@ -16,6 +16,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener
 import org.springframework.data.jpa.repository.Query
 import org.springframework.data.repository.CrudRepository
 import org.springframework.stereotype.Repository
+import uk.gov.justice.digital.hmpps.hmppscourtregisterapi.client.dto.OrganisationUnit
 import uk.gov.justice.digital.hmpps.hmppscourtregisterapi.resource.UpdateContactDto
 import java.time.LocalDateTime
 import java.util.Optional
@@ -66,5 +67,11 @@ data class Building(
     val contact = Contact(building = this, type = dto.type, detail = dto.detail)
     contacts = contacts.plus(contact)
     return contact
+  }
+
+  companion object {
+    fun from(organisationUnit: OrganisationUnit, court: Court): Building {
+      return Building(court = court, buildingName = organisationUnit.addressLine1, street = organisationUnit.addressLine2, town = organisationUnit.addressLine3, county = organisationUnit.oUCodeL2Name, postcode = organisationUnit.postCode, active = true, country = null, locality = null, subCode = null)
+    }
   }
 }

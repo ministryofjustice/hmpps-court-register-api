@@ -4,6 +4,7 @@ import org.awaitility.kotlin.await
 import org.awaitility.kotlin.matches
 import org.awaitility.kotlin.untilCallTo
 import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT
@@ -16,9 +17,11 @@ import software.amazon.awssdk.services.sqs.model.PurgeQueueRequest
 import uk.gov.justice.digital.hmpps.hmppscourtregisterapi.helper.JwtAuthHelper
 import uk.gov.justice.digital.hmpps.hmppscourtregisterapi.testcontainers.LocalStackContainer
 import uk.gov.justice.digital.hmpps.hmppscourtregisterapi.testcontainers.PostgresContainer
+import uk.gov.justice.digital.hmpps.hmppscourtregisterapi.wiremock.SDRSApiExtension
 import uk.gov.justice.hmpps.sqs.HmppsQueueService
 import uk.gov.justice.hmpps.sqs.countMessagesOnQueue
 
+@ExtendWith(SDRSApiExtension::class)
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 @ActiveProfiles("test")
 abstract class IntegrationTestBase {

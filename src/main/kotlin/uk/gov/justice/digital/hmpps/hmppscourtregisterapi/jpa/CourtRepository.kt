@@ -19,6 +19,7 @@ import org.springframework.data.repository.CrudRepository
 import org.springframework.data.repository.PagingAndSortingRepository
 import org.springframework.data.repository.query.Param
 import org.springframework.stereotype.Repository
+import uk.gov.justice.digital.hmpps.hmppscourtregisterapi.client.dto.OrganisationUnit
 import uk.gov.justice.digital.hmpps.hmppscourtregisterapi.resource.UpdateBuildingDto
 import java.time.LocalDateTime
 
@@ -104,5 +105,10 @@ data class Court(
     buildings = buildings.plus(building)
 
     return building
+  }
+  companion object {
+    fun from(organisationUnit: OrganisationUnit): Court {
+      return Court(organisationUnit.oUCode, organisationUnit.oUCodeL3Name, null, CourtType.from(organisationUnit.oUCodeL1Name), true)
+    }
   }
 }
