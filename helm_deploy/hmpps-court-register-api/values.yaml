@@ -13,6 +13,13 @@ generic-service:
     enabled: true
     host: app-hostname.local # override per environment
     tlsSecretName: hmpps-court-register-api-cert
+    annotations:
+      nginx.ingress.kubernetes.io/configuration-snippet: |
+        server_tokens off;
+        location /admin/** {
+          deny all;
+          return 401;
+        }
 
   # Environment variables to load into the deployment
   env:
@@ -48,3 +55,5 @@ generic-service:
 
 generic-prometheus-alerts:
   targetApplication: hmpps-court-register-api
+
+refresh_cronjob_schedule: "0 */1 * * *"

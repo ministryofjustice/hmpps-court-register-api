@@ -1,0 +1,22 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: refresh-data-cronjob
+spec:
+  schedule: "{{ .Values.refresh_cronjob_schedule }}"
+  concurrencyPolicy: Forbid
+  failedJobsHistoryLimit: 5
+  startingDeadlineSeconds: 600
+  successfulJobsHistoryLimit: 5
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: refresh-data
+              image: ghcr.io/ministryofjustice/hmpps-devops-tools
+              args:
+                - /bin/sh
+                - -c
+                - curl -XPOST --connect-timeout 5 --retry 5 --retry-delay 0 http://hmpps-court-register-api/admin/refresh-data
+          restartPolicy: Never
