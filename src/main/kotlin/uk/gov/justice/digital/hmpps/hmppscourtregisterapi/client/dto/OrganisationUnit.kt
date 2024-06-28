@@ -10,8 +10,8 @@ data class OrganisationUnit(
   val oUCodeL1Name: String,
   val phoneNumber: String?,
   val addressLine1: String,
-  val addressLine2: String,
-  val addressLine3: String,
+  val addressLine2: String?,
+  val addressLine3: String?,
   val postCode: String,
   val oUCode: String,
 )
