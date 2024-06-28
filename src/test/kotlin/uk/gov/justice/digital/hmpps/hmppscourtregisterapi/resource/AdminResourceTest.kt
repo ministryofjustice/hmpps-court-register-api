@@ -7,8 +7,18 @@ import uk.gov.justice.digital.hmpps.hmppscourtregisterapi.wiremock.SDRSApiExtens
 class AdminResourceTest : IntegrationTestBase() {
 
   @Test
-  fun `should insert all data from SDRS on a data refresh`() {
+  fun `idempotent should insert all data from SDRS on a data refresh`() {
     sdrsApi.stubGetSingleCourt()
+    webTestClient.post().uri("/admin/refresh-data")
+      .exchange()
+      .expectStatus().isNoContent
+
+    webTestClient.get().uri("/courts/id/B05XX00")
+      .exchange()
+      .expectStatus().isOk
+      .expectBody()
+      .jsonPath("$.courtId").isEqualTo("B05XX00")
+
     webTestClient.post().uri("/admin/refresh-data")
       .exchange()
       .expectStatus().isNoContent

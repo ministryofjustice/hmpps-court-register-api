@@ -106,9 +106,15 @@ data class Court(
 
     return building
   }
+
+  fun updateFromOrganisationUnit(organisationUnit: OrganisationUnit, courtType: CourtType) {
+    this.courtName = organisationUnit.oUCodeL3Name
+    this.courtType = courtType
+    this.active = true
+  }
   companion object {
-    fun from(organisationUnit: OrganisationUnit): Court {
-      return Court(organisationUnit.oUCode, organisationUnit.oUCodeL3Name, null, CourtType.from(organisationUnit.oUCodeL1Name), true)
+    fun from(organisationUnit: OrganisationUnit, courtType: CourtType): Court {
+      return Court(organisationUnit.oUCode, organisationUnit.oUCodeL3Name, null, courtType, true)
     }
   }
 }

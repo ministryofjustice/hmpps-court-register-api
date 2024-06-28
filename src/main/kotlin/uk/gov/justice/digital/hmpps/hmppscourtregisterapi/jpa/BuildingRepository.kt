@@ -69,6 +69,15 @@ data class Building(
     return contact
   }
 
+  fun updateFromOrganisationUnit(organisationUnit: OrganisationUnit) {
+    this.buildingName = organisationUnit.addressLine1
+    this.street = organisationUnit.addressLine2
+    this.town = organisationUnit.addressLine3
+    this.county = organisationUnit.oUCodeL2Name
+    this.postcode = organisationUnit.postCode
+    this.active = true
+  }
+
   companion object {
     fun from(organisationUnit: OrganisationUnit, court: Court): Building {
       return Building(court = court, buildingName = organisationUnit.addressLine1, street = organisationUnit.addressLine2, town = organisationUnit.addressLine3, county = organisationUnit.oUCodeL2Name, postcode = organisationUnit.postCode, active = true, country = null, locality = null, subCode = null)
