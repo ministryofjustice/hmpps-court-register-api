@@ -25,11 +25,11 @@ dependencies {
   // AWS
   implementation("uk.gov.justice.service.hmpps:hmpps-sqs-spring-boot-starter:4.0.1")
 
-  implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.5.0")
+  implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.6.0")
   implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.1")
 
   testImplementation("org.springframework.security:spring-security-test")
-  testImplementation("org.wiremock:wiremock-standalone:3.7.0")
+  testImplementation("org.wiremock:wiremock-standalone:3.8.0")
   testImplementation("net.javacrumbs.json-unit:json-unit-assertj:3.3.0")
   testImplementation("org.testcontainers:localstack:1.19.8")
   testImplementation("org.testcontainers:postgresql:1.19.8")
