@@ -80,7 +80,8 @@ data class Building(
 
   companion object {
     fun from(organisationUnit: OrganisationUnit, court: Court): Building {
-      return Building(court = court, buildingName = organisationUnit.addressLine1, street = organisationUnit.addressLine2, town = organisationUnit.addressLine3, county = organisationUnit.oUCodeL2Name, postcode = organisationUnit.postCode, active = true, country = null, locality = null, subCode = null)
+      val subCode = if (court.buildings.isEmpty()) null else organisationUnit.postCode.uppercase().replace(" ", "").substring(0, 6)
+      return Building(court = court, buildingName = organisationUnit.addressLine1, street = organisationUnit.addressLine2, town = organisationUnit.addressLine3, county = organisationUnit.oUCodeL2Name, postcode = organisationUnit.postCode, active = true, country = null, locality = null, subCode = subCode)
     }
   }
 }
