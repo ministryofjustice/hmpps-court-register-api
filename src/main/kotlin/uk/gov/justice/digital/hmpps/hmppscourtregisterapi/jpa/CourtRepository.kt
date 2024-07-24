@@ -94,10 +94,10 @@ data class Court(
       subCode = dto.subCode,
       addressLine1 = dto.addressLine1,
       addressLine2 = dto.addressLine2,
-      addressLine4 = dto.addressLine4,
       addressLine3 = dto.addressLine3,
-      postcode = dto.postcode,
+      addressLine4 = dto.addressLine4,
       addressLine5 = dto.addressLine5,
+      postcode = dto.postcode,
       active = dto.active,
     )
     building.contacts = dto.contacts.map { building.addContact(it) }

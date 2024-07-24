@@ -329,7 +329,7 @@ data class CourtTypeDto(
   @Schema(description = "Type of court", example = "COU", required = true) val courtType: String,
   @Schema(
     description = "Description of the type of court",
-    example = "Address Line 5 Court/Address Line 5 Divorce Ct",
+    example = "County Court/County Divorce Ct",
     required = true,
   ) @NotBlank val courtName: String,
 ) {
@@ -343,7 +343,7 @@ data class BuildingDto(
   @Schema(description = "Court Id for this building", example = "ACCRYC") val courtId: String,
   @Schema(description = "Sub location code for referencing building", example = "AAABBB") val subCode: String?,
   @Schema(description = "Address line 1", example = "Crown House") val addressLine1: String?,
-  @Schema(description = "Address Line 2", example = "452 West addressLine2") val addressLine2: String?,
+  @Schema(description = "Address Line 2", example = "452 West Street") val addressLine2: String?,
   @Schema(description = "Address Line 3", example = "Swansea") val addressLine3: String?,
   @Schema(description = "Address Line 4", example = "West Cross") val addressLine4: String?,
   @Schema(description = "Address Line 5", example = "South Glamorgan") val addressLine5: String?,

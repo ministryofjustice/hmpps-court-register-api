@@ -220,7 +220,7 @@ data class UpdateBuildingDto(
     message = "Address Line 1 must be no more than 50 characters",
   )
   val addressLine1: String?,
-  @Schema(description = "Address Line 2", example = "452 West addressLine2")
+  @Schema(description = "Address Line 2", example = "452 West Street")
   @field:Size(
     max = 80,
     message = "Address Line 2 must be no more than 80 characters",
