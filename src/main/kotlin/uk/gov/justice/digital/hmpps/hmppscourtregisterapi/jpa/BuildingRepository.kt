@@ -45,13 +45,12 @@ data class Building(
   var court: Court,
 
   var subCode: String?,
-  var buildingName: String?,
-  var street: String?,
-  var locality: String?,
-  var town: String?,
-  var county: String?,
+  var addressLine1: String?,
+  var addressLine2: String?,
+  var addressLine3: String?,
+  var addressLine4: String?,
+  var addressLine5: String?,
   var postcode: String?,
-  var country: String?,
   var active: Boolean,
 
   @CreatedDate
@@ -70,10 +69,11 @@ data class Building(
   }
 
   fun updateFromOrganisationUnit(organisationUnit: OrganisationUnit) {
-    this.buildingName = organisationUnit.addressLine1
-    this.street = organisationUnit.addressLine2
-    this.town = organisationUnit.addressLine3
-    this.county = organisationUnit.oUCodeL2Name
+    this.addressLine1 = organisationUnit.addressLine1
+    this.addressLine2 = organisationUnit.addressLine2
+    this.addressLine3 = organisationUnit.addressLine3
+    this.addressLine4 = organisationUnit.addressLine4
+    this.addressLine5 = organisationUnit.addressLine5
     this.postcode = organisationUnit.postCode
     this.active = true
   }
@@ -81,7 +81,7 @@ data class Building(
   companion object {
     fun from(organisationUnit: OrganisationUnit, court: Court): Building {
       val subCode = if (court.buildings.isEmpty()) null else organisationUnit.postCode.uppercase().replace(" ", "").substring(0, 6)
-      return Building(court = court, buildingName = organisationUnit.addressLine1, street = organisationUnit.addressLine2, town = organisationUnit.addressLine3, county = organisationUnit.oUCodeL2Name, postcode = organisationUnit.postCode, active = true, country = null, locality = null, subCode = subCode)
+      return Building(court = court, addressLine1 = organisationUnit.addressLine1, addressLine2 = organisationUnit.addressLine2, addressLine3 = organisationUnit.addressLine3, addressLine4 = organisationUnit.addressLine4, addressLine5 = organisationUnit.addressLine5, postcode = organisationUnit.postCode, active = true, subCode = subCode)
     }
   }
 }

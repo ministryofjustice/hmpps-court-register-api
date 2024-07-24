@@ -29,10 +29,10 @@ class CourtBuildingMaintenanceIntTest : IntegrationTestBase() {
           BodyInserters.fromValue(
             """
               {
-                "buildingName": "New Crown Building",
-                "street": "Green Street",
-                "town": "M GLAM",
-                "county": "Aberdare",
+                "addressLine1": "New Crown Building",
+                "addressLine2": "Green Street",
+                "addressLine3": "M GLAM",
+                "addressLine5": "Aberdare",
                 "postcode": "CF44 7DW",
                 "active": false
             }
@@ -46,7 +46,7 @@ class CourtBuildingMaintenanceIntTest : IntegrationTestBase() {
         .exchange()
         .expectStatus().isOk
         .expectBody()
-        .jsonPath("$.buildingName").isEqualTo("New Crown Building")
+        .jsonPath("$.addressLine1").isEqualTo("New Crown Building")
         .jsonPath("$.active").isEqualTo(false)
     }
 
@@ -65,11 +65,11 @@ class CourtBuildingMaintenanceIntTest : IntegrationTestBase() {
           BodyInserters.fromValue(
             """
               {
-                "buildingName": "Crown Building",
+                "addressLine1": "Crown Building",
                 "subCode": "ZYXAA",
-                "street": "Green Street",
-                "town": "M GLAM",
-                "county": "Aberdare",
+                "addressLine2": "Green Street",
+                "addressLine3": "M GLAM",
+                "addressLine5": "Aberdare",
                 "postcode": "CF44 7DW"
             }
             """.trimIndent(),
@@ -100,11 +100,11 @@ class CourtBuildingMaintenanceIntTest : IntegrationTestBase() {
           BodyInserters.fromValue(
             """
               {
-                "buildingName": "Crown Building",
+                "addressLine1": "Crown Building",
                 "subCode": "BRMNCC",
-                "street": "Green Street",
-                "town": "M GLAM",
-                "county": "Aberdare",
+                "addressLine2": "Green Street",
+                "addressLine3": "M GLAM",
+                "addressLine5": "Aberdare",
                 "postcode": "CF44 7DW"
             }
             """.trimIndent(),
@@ -129,11 +129,11 @@ class CourtBuildingMaintenanceIntTest : IntegrationTestBase() {
           BodyInserters.fromValue(
             """
               {
-                "buildingName": "Crown Building",
+                "addressLine1": "Crown Building",
                 "subCode": "BCCACC",
-                "street": "Green Street",
-                "town": "M GLAM",
-                "county": "Aberdare",
+                "addressLine2": "Green Street",
+                "addressLine3": "M GLAM",
+                "addressLine5": "Aberdare",
                 "postcode": "CF44 7DW"
             }
             """.trimIndent(),
@@ -158,11 +158,11 @@ class CourtBuildingMaintenanceIntTest : IntegrationTestBase() {
           BodyInserters.fromValue(
             """
               {
-                "buildingName": "New Building 1",
+                "addressLine1": "New Building 1",
                 "subCode": "BCCACC",
-                "street": "Green Street",
-                "town": "M GLAM",
-                "county": "Aberdare",
+                "addressLine2": "Green Street",
+                "addressLine3": "M GLAM",
+                "addressLine5": "Aberdare",
                 "postcode": "CF44 7DW"
             }
             """.trimIndent(),
@@ -187,11 +187,11 @@ class CourtBuildingMaintenanceIntTest : IntegrationTestBase() {
           BodyInserters.fromValue(
             """
               {
-                "buildingName": "New Building 1",
+                "addressLine1": "New Building 1",
                 "subCode": null,
-                "street": "Green Street",
-                "town": "M GLAM",
-                "county": "Aberdare",
+                "addressLine2": "Green Street",
+                "addressLine3": "M GLAM",
+                "addressLine5": "Aberdare",
                 "postcode": "CF44 7DW"
             }
             """.trimIndent(),

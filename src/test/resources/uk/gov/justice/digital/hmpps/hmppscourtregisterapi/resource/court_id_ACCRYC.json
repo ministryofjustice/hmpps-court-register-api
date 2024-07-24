@@ -11,13 +11,12 @@
       "id": 1,
       "courtId": "ACCRYC",
       "subCode": "SUBT11",
-      "buildingName": "Annex",
-      "street": "West Cross",
-      "locality": "Mumble",
-      "town": "Sheffield",
-      "county": "Yorkshire",
+      "addressLine1": "Annex",
+      "addressLine2": "West Cross",
+      "addressLine3": "Mumble",
+      "addressLine4": "Sheffield",
+      "addressLine5": "Yorkshire",
       "postcode": "SA4 5TH",
-      "country": "UK",
       "contacts": [
         {
           "id": -1,
@@ -38,13 +37,12 @@
     {
       "id": 2,
       "courtId": "ACCRYC",
-      "buildingName": "Main building",
-      "street": "West Cross",
-      "locality": "A Place",
-      "town": "Sheffield",
-      "county": "Yorkshire",
+      "addressLine1": "Main building",
+      "addressLine2": "West Cross",
+      "addressLine3": "A Place",
+      "addressLine4": "Sheffield",
+      "addressLine5": "Yorkshire",
       "postcode": "SA4 5TT",
-      "country": "UK",
       "contacts": [
         {
           "id": -3,
