@@ -72,7 +72,8 @@ data class Building(
     this.addressLine1 = organisationUnit.addressLine1
     this.addressLine2 = organisationUnit.addressLine2
     this.addressLine3 = organisationUnit.addressLine3
-    this.addressLine5 = organisationUnit.oUCodeL2Name
+    this.addressLine4 = organisationUnit.addressLine4
+    this.addressLine5 = organisationUnit.addressLine5
     this.postcode = organisationUnit.postCode
     this.active = true
   }
