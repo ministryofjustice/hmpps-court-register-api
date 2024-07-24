@@ -41,13 +41,12 @@ class CourtBuildingService(
     }
 
     with(updateBuildingRecord) {
-      building.buildingName = buildingName
-      building.street = street
-      building.locality = locality
-      building.town = town
+      building.addressLine1 = addressLine1
+      building.addressLine2 = addressLine2
+      building.addressLine3 = addressLine3
+      building.addressLine4 = addressLine4
       building.postcode = postcode
-      building.county = county
-      building.country = country
+      building.addressLine5 = addressLine5
       building.subCode = subCode
       building.active = active
     }
@@ -74,13 +73,12 @@ class CourtBuildingService(
       val building = Building(
         court = court,
         subCode = subCode,
-        buildingName = buildingName,
-        street = street,
-        locality = locality,
-        town = town,
+        addressLine1 = addressLine1,
+        addressLine2 = addressLine2,
+        addressLine3 = addressLine3,
+        addressLine4 = addressLine4,
         postcode = postcode,
-        county = county,
-        country = country,
+        addressLine5 = addressLine5,
         active = active,
       )
 

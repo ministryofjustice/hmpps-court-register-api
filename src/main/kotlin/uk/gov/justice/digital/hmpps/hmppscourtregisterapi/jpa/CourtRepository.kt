@@ -92,13 +92,12 @@ data class Court(
     val building = Building(
       court = this,
       subCode = dto.subCode,
-      buildingName = dto.buildingName,
-      street = dto.street,
-      locality = dto.locality,
-      town = dto.town,
+      addressLine1 = dto.addressLine1,
+      addressLine2 = dto.addressLine2,
+      addressLine4 = dto.addressLine4,
+      addressLine3 = dto.addressLine3,
       postcode = dto.postcode,
-      county = dto.county,
-      country = dto.country,
+      addressLine5 = dto.addressLine5,
       active = dto.active,
     )
     building.contacts = dto.contacts.map { building.addContact(it) }

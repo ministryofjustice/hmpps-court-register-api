@@ -12,6 +12,8 @@ data class OrganisationUnit(
   val addressLine1: String,
   val addressLine2: String?,
   val addressLine3: String?,
+  val addressLine4: String?,
+  val addressLine5: String?,
   val postCode: String,
   val oUCode: String,
 )

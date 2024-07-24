@@ -329,7 +329,7 @@ data class CourtTypeDto(
   @Schema(description = "Type of court", example = "COU", required = true) val courtType: String,
   @Schema(
     description = "Description of the type of court",
-    example = "County Court/County Divorce Ct",
+    example = "Address Line 5 Court/Address Line 5 Divorce Ct",
     required = true,
   ) @NotBlank val courtName: String,
 ) {
@@ -342,19 +342,18 @@ data class BuildingDto(
   @Schema(description = "Unique ID of the building", example = "10000", required = true) val id: Int,
   @Schema(description = "Court Id for this building", example = "ACCRYC") val courtId: String,
   @Schema(description = "Sub location code for referencing building", example = "AAABBB") val subCode: String?,
-  @Schema(description = "Building Name", example = "Crown House") val buildingName: String?,
-  @Schema(description = "Street Number and Name", example = "452 West Street") val street: String?,
-  @Schema(description = "Locality", example = "West Cross") val locality: String?,
-  @Schema(description = "Town/City", example = "Swansea") val town: String?,
-  @Schema(description = "County", example = "South Glamorgan") val county: String?,
+  @Schema(description = "Address line 1", example = "Crown House") val addressLine1: String?,
+  @Schema(description = "Address Line 2", example = "452 West addressLine2") val addressLine2: String?,
+  @Schema(description = "Address Line 3", example = "Swansea") val addressLine3: String?,
+  @Schema(description = "Address Line 4", example = "West Cross") val addressLine4: String?,
+  @Schema(description = "Address Line 5", example = "South Glamorgan") val addressLine5: String?,
   @Schema(description = "Postcode", example = "SA3 4HT") val postcode: String?,
-  @Schema(description = "Country", example = "UK") val country: String?,
   @Schema(description = "List of contacts for this building by type") val contacts: List<ContactDto>? = listOf(),
   @Schema(description = "Whether the building is active") val active: Boolean,
 ) {
   constructor(building: Building) : this(
-    building.id!!, building.court.id, building.subCode, building.buildingName, building.street, building.locality,
-    building.town, building.county, building.postcode, building.country, building.contacts.map { ContactDto(it) },
+    building.id!!, building.court.id, building.subCode, building.addressLine1, building.addressLine2, building.addressLine4,
+    building.addressLine3, building.addressLine5, building.postcode, building.contacts.map { ContactDto(it) },
     building.active,
   )
 }
