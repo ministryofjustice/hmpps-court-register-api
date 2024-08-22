@@ -115,7 +115,7 @@ data class Court(
 
   fun updateFromAgency(agency: Agency, courtType: CourtType) {
     this.courtName = agency.description
-    this.courtDescription = agency.longDescription
+    this.courtDescription = agency.longDescription ?: agency.description
     this.courtType = courtType
     this.active = agency.active
   }
@@ -125,7 +125,7 @@ data class Court(
     }
 
     fun from(agency: Agency, courtType: CourtType): Court {
-      return Court(agency.agencyId, agency.description, agency.longDescription, courtType, agency.active)
+      return Court(agency.agencyId, agency.description, agency.longDescription ?: agency.description, courtType, agency.active)
     }
   }
 }
