@@ -2,8 +2,8 @@ package uk.gov.justice.digital.hmpps.hmppscourtregisterapi.service
 
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
-import uk.gov.justice.digital.hmpps.hmppscourtregisterapi.client.SDRSApiClient
-import uk.gov.justice.digital.hmpps.hmppscourtregisterapi.client.dto.SDRSRequest
+import uk.gov.justice.digital.hmpps.hmppscourtregisterapi.client.sdrs.SDRSApiClient
+import uk.gov.justice.digital.hmpps.hmppscourtregisterapi.client.sdrs.dto.SDRSRequest
 import uk.gov.justice.digital.hmpps.hmppscourtregisterapi.jpa.Building
 import uk.gov.justice.digital.hmpps.hmppscourtregisterapi.jpa.BuildingRepository
 import uk.gov.justice.digital.hmpps.hmppscourtregisterapi.jpa.Contact

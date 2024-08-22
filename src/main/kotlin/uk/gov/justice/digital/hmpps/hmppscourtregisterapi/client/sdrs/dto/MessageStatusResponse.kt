@@ -1,4 +1,4 @@
-package uk.gov.justice.digital.hmpps.hmppscourtregisterapi.client.dto
+package uk.gov.justice.digital.hmpps.hmppscourtregisterapi.client.sdrs.dto
 
 data class MessageStatusResponse(
   val status: String,

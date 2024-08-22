@@ -29,6 +29,7 @@ class ResourceServerConfiguration {
           "/swagger-resources", "/swagger-resources/configuration/ui", "/swagger-resources/configuration/security",
           "/courts/**", "/some-url-not-found",
           "/admin/refresh-data",
+          "/admin/refresh-nomis-data",
         ).forEach { authorize(it, permitAll) }
         authorize(anyRequest, authenticated)
       }

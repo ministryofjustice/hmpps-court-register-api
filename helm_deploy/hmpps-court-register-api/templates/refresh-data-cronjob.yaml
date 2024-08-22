@@ -18,5 +18,5 @@ spec:
               args:
                 - /bin/sh
                 - -c
-                - curl -XPOST --connect-timeout 5 --retry 5 --retry-delay 0 http://hmpps-court-register-api/admin/refresh-data
+                - curl -XPOST --connect-timeout 5 --retry 5 --retry-delay 0 http://hmpps-court-register-api/admin/refresh-nomis-data
           restartPolicy: Never

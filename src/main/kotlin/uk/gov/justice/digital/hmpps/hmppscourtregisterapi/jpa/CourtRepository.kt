@@ -19,7 +19,8 @@ import org.springframework.data.repository.CrudRepository
 import org.springframework.data.repository.PagingAndSortingRepository
 import org.springframework.data.repository.query.Param
 import org.springframework.stereotype.Repository
-import uk.gov.justice.digital.hmpps.hmppscourtregisterapi.client.dto.OrganisationUnit
+import uk.gov.justice.digital.hmpps.hmppscourtregisterapi.client.prisonapi.dto.Agency
+import uk.gov.justice.digital.hmpps.hmppscourtregisterapi.client.sdrs.dto.OrganisationUnit
 import uk.gov.justice.digital.hmpps.hmppscourtregisterapi.resource.UpdateBuildingDto
 import java.time.LocalDateTime
 
@@ -111,9 +112,20 @@ data class Court(
     this.courtType = courtType
     this.active = true
   }
+
+  fun updateFromAgency(agency: Agency, courtType: CourtType) {
+    this.courtName = agency.description
+    this.courtDescription = agency.longDescription
+    this.courtType = courtType
+    this.active = agency.active
+  }
   companion object {
     fun from(organisationUnit: OrganisationUnit, courtType: CourtType): Court {
       return Court(organisationUnit.oUCode, organisationUnit.oUCodeL3Name, null, courtType, true)
+    }
+
+    fun from(agency: Agency, courtType: CourtType): Court {
+      return Court(agency.agencyId, agency.description, agency.longDescription, courtType, agency.active)
     }
   }
 }
