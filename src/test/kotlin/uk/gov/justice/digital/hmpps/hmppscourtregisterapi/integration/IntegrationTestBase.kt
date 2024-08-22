@@ -17,11 +17,13 @@ import software.amazon.awssdk.services.sqs.model.PurgeQueueRequest
 import uk.gov.justice.digital.hmpps.hmppscourtregisterapi.helper.JwtAuthHelper
 import uk.gov.justice.digital.hmpps.hmppscourtregisterapi.testcontainers.LocalStackContainer
 import uk.gov.justice.digital.hmpps.hmppscourtregisterapi.testcontainers.PostgresContainer
+import uk.gov.justice.digital.hmpps.hmppscourtregisterapi.wiremock.HmppsAuthApiExtension
+import uk.gov.justice.digital.hmpps.hmppscourtregisterapi.wiremock.PrisonApiExtension
 import uk.gov.justice.digital.hmpps.hmppscourtregisterapi.wiremock.SDRSApiExtension
 import uk.gov.justice.hmpps.sqs.HmppsQueueService
 import uk.gov.justice.hmpps.sqs.countMessagesOnQueue
 
-@ExtendWith(SDRSApiExtension::class)
+@ExtendWith(SDRSApiExtension::class, PrisonApiExtension::class, HmppsAuthApiExtension::class)
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 @ActiveProfiles("test")
 abstract class IntegrationTestBase {

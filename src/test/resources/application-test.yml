@@ -37,3 +37,7 @@ hmpps.sqs:
 sdrs:
   api:
     url: http://localhost:8332
+
+prison:
+  api:
+    url: http://localhost:8333

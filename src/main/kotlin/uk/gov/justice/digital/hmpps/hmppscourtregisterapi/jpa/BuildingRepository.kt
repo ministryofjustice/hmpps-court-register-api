@@ -16,7 +16,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener
 import org.springframework.data.jpa.repository.Query
 import org.springframework.data.repository.CrudRepository
 import org.springframework.stereotype.Repository
-import uk.gov.justice.digital.hmpps.hmppscourtregisterapi.client.dto.OrganisationUnit
+import uk.gov.justice.digital.hmpps.hmppscourtregisterapi.client.sdrs.dto.OrganisationUnit
 import uk.gov.justice.digital.hmpps.hmppscourtregisterapi.resource.UpdateContactDto
 import java.time.LocalDateTime
 import java.util.Optional
