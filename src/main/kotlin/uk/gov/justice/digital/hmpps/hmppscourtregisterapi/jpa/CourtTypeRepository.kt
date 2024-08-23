@@ -22,7 +22,7 @@ data class CourtType(
     }
 
     fun from(agency: Agency): CourtType {
-      return CourtType(agency.courtType, agency.courtTypeDescription)
+      return CourtType(agency.courtType ?: "UNK", agency.courtTypeDescription ?: "Unknown")
     }
   }
 }
