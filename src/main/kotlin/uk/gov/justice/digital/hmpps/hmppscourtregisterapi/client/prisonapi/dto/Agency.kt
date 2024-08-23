@@ -5,6 +5,6 @@ data class Agency(
   val description: String,
   val longDescription: String?,
   val active: Boolean,
-  val courtType: String,
-  val courtTypeDescription: String,
+  val courtType: String?,
+  val courtTypeDescription: String?,
 )
