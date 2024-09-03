@@ -26,6 +26,10 @@ class CourtService(
     return CourtDto(court)
   }
 
+  fun findByIds(courtIds: List<String>): List<CourtDto> {
+    return courtRepository.findAllById(courtIds).map { CourtDto(it) }
+  }
+
   fun findAll(activeOnly: Boolean = false): List<CourtDto> {
     if (activeOnly) {
       return courtRepository.findByActiveOrderById(true).map { CourtDto(it) }

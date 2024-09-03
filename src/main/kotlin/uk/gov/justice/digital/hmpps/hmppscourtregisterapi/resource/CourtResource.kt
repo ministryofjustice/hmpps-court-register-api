@@ -70,6 +70,28 @@ class CourtResource(
   ): CourtDto =
     courtService.findById(courtId)
 
+  @GetMapping("/id/multiple")
+  @Operation(
+    summary = "Get court by ids",
+    description = "Information on multiple courts",
+    responses = [
+      ApiResponse(
+        responseCode = "200",
+        description = "Court Information Returned",
+        content = [Content(mediaType = "application/json", array = ArraySchema(schema = Schema(implementation = CourtDto::class)))],
+      ),
+      ApiResponse(
+        responseCode = "400",
+        description = "Incorrect request to get court information",
+        content = [Content(mediaType = "application/json", schema = Schema(implementation = ErrorResponse::class))],
+      ),
+    ],
+  )
+  fun getCourtsByIds(
+    @Parameter(description = "CourtIDs", example = "ACCRYC", required = true) @RequestParam(required = true) courtIds: List<String>,
+  ): List<CourtDto> =
+    courtService.findByIds(courtIds)
+
   @GetMapping("")
   @Operation(
     summary = "Get all active courts",
