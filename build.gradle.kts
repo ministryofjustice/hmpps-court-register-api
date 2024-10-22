@@ -1,7 +1,7 @@
 plugins {
-  id("uk.gov.justice.hmpps.gradle-spring-boot") version "6.0.6"
-  kotlin("plugin.spring") version "2.0.20"
-  kotlin("plugin.jpa") version "2.0.20"
+  id("uk.gov.justice.hmpps.gradle-spring-boot") version "6.0.7"
+  kotlin("plugin.spring") version "2.0.21"
+  kotlin("plugin.jpa") version "2.0.21"
 }
 
 configurations {
@@ -29,10 +29,10 @@ dependencies {
   implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0")
 
   testImplementation("org.springframework.security:spring-security-test")
-  testImplementation("org.wiremock:wiremock-standalone:3.9.1")
+  testImplementation("org.wiremock:wiremock-standalone:3.9.2")
   testImplementation("net.javacrumbs.json-unit:json-unit-assertj:3.4.1")
-  testImplementation("org.testcontainers:localstack:1.20.2")
-  testImplementation("org.testcontainers:postgresql:1.20.2")
+  testImplementation("org.testcontainers:localstack:1.20.3")
+  testImplementation("org.testcontainers:postgresql:1.20.3")
   testImplementation("org.awaitility:awaitility-kotlin:4.2.2")
   testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactive:1.9.0")
   testImplementation("io.jsonwebtoken:jjwt-impl:0.12.6")
