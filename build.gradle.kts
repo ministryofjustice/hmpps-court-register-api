@@ -30,7 +30,7 @@ dependencies {
 
   testImplementation("org.springframework.security:spring-security-test")
   testImplementation("org.wiremock:wiremock-standalone:3.9.2")
-  testImplementation("net.javacrumbs.json-unit:json-unit-assertj:3.5.0")
+  testImplementation("net.javacrumbs.json-unit:json-unit-assertj:4.0.0")
   testImplementation("org.testcontainers:localstack:1.20.3")
   testImplementation("org.testcontainers:postgresql:1.20.3")
   testImplementation("org.awaitility:awaitility-kotlin:4.2.2")
