@@ -1,7 +1,7 @@
 plugins {
-  id("uk.gov.justice.hmpps.gradle-spring-boot") version "6.0.8"
-  kotlin("plugin.spring") version "2.0.21"
-  kotlin("plugin.jpa") version "2.0.21"
+  id("uk.gov.justice.hmpps.gradle-spring-boot") version "6.1.0"
+  kotlin("plugin.spring") version "2.1.0"
+  kotlin("plugin.jpa") version "2.1.0"
 }
 
 configurations {
@@ -23,16 +23,16 @@ dependencies {
   implementation("javax.xml.bind:jaxb-api:2.3.1")
 
   // AWS
-  implementation("uk.gov.justice.service.hmpps:hmpps-sqs-spring-boot-starter:5.1.1")
+  implementation("uk.gov.justice.service.hmpps:hmpps-sqs-spring-boot-starter:5.2.1")
 
-  implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.6.0")
+  implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.7.0")
   implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0")
 
   testImplementation("org.springframework.security:spring-security-test")
-  testImplementation("org.wiremock:wiremock-standalone:3.9.2")
-  testImplementation("net.javacrumbs.json-unit:json-unit-assertj:4.0.0")
-  testImplementation("org.testcontainers:localstack:1.20.3")
-  testImplementation("org.testcontainers:postgresql:1.20.3")
+  testImplementation("org.wiremock:wiremock-standalone:3.10.0")
+  testImplementation("net.javacrumbs.json-unit:json-unit-assertj:4.1.0")
+  testImplementation("org.testcontainers:localstack:1.20.4")
+  testImplementation("org.testcontainers:postgresql:1.20.4")
   testImplementation("org.awaitility:awaitility-kotlin:4.2.2")
   testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactive:1.9.0")
   testImplementation("io.jsonwebtoken:jjwt-impl:0.12.6")
