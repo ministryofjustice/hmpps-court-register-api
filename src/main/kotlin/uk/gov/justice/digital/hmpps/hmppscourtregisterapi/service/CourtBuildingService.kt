@@ -16,17 +16,11 @@ class CourtBuildingService(
   private val courtRepository: CourtRepository,
   private val buildingRepository: BuildingRepository,
 ) {
-  fun findById(courtId: String, buildingId: Int): BuildingDto {
-    return BuildingDto(getBuilding(buildingId, courtId))
-  }
+  fun findById(courtId: String, buildingId: Int): BuildingDto = BuildingDto(getBuilding(buildingId, courtId))
 
-  fun findBySubCode(subCode: String): BuildingDto {
-    return BuildingDto(buildingRepository.findBySubCode(subCode).orElseThrow { EntityNotFoundException("Building subcode $subCode not found") })
-  }
+  fun findBySubCode(subCode: String): BuildingDto = BuildingDto(buildingRepository.findBySubCode(subCode).orElseThrow { EntityNotFoundException("Building subcode $subCode not found") })
 
-  fun findMainBuilding(courtId: String): BuildingDto {
-    return BuildingDto(buildingRepository.findMainBuilding(courtId).orElseThrow { EntityNotFoundException("Main building for court id $courtId not found") })
-  }
+  fun findMainBuilding(courtId: String): BuildingDto = BuildingDto(buildingRepository.findMainBuilding(courtId).orElseThrow { EntityNotFoundException("Main building for court id $courtId not found") })
 
   fun updateBuilding(courtId: String, buildingId: Int, updateBuildingRecord: UpdateBuildingDto): BuildingDto {
     val building = getBuilding(buildingId, courtId)

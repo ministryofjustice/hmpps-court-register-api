@@ -67,8 +67,7 @@ class CourtResource(
     @PathVariable
     @Size(max = 12, min = 2, message = "Court ID must be between 2 and 12")
     courtId: String,
-  ): CourtDto =
-    courtService.findById(courtId)
+  ): CourtDto = courtService.findById(courtId)
 
   @GetMapping("/id/multiple")
   @Operation(
@@ -89,8 +88,7 @@ class CourtResource(
   )
   fun getCourtsByIds(
     @Parameter(description = "CourtIDs", example = "ACCRYC", required = true) @RequestParam(required = true) courtIds: List<String>,
-  ): List<CourtDto> =
-    courtService.findByIds(courtIds)
+  ): List<CourtDto> = courtService.findByIds(courtIds)
 
   @GetMapping("")
   @Operation(
@@ -109,8 +107,7 @@ class CourtResource(
       ),
     ],
   )
-  fun getActiveCourts(): List<CourtDto> =
-    courtService.findAll(true)
+  fun getActiveCourts(): List<CourtDto> = courtService.findAll(true)
 
   @GetMapping("/types")
   @Operation(
@@ -129,8 +126,7 @@ class CourtResource(
       ),
     ],
   )
-  fun getCourtTypes(): List<CourtTypeDto> =
-    courtService.getCourtTypes()
+  fun getCourtTypes(): List<CourtTypeDto> = courtService.getCourtTypes()
 
   @GetMapping("/all")
   @Operation(
@@ -149,8 +145,7 @@ class CourtResource(
       ),
     ],
   )
-  fun getAllCourts(): List<CourtDto> =
-    courtService.findAll(false)
+  fun getAllCourts(): List<CourtDto> = courtService.findAll(false)
 
   @GetMapping("/paged")
   @Operation(
@@ -174,8 +169,7 @@ class CourtResource(
     @Parameter(description = "Court Type", example = "CRN", required = false) @RequestParam courtTypeIds: List<String>? = null,
     @Parameter(description = "Text search", example = "Sheffield", required = false) @RequestParam textSearch: String? = null,
     pageable: Pageable = Pageable.unpaged(),
-  ): Page<CourtDto> =
-    courtService.findPage(active, courtTypeIds, textSearch, pageable)
+  ): Page<CourtDto> = courtService.findPage(active, courtTypeIds, textSearch, pageable)
 
   @GetMapping("/id/{courtId}/buildings/id/{buildingId}")
   @Operation(
@@ -207,8 +201,7 @@ class CourtResource(
     @Schema(description = "Building ID", example = "234231", required = true)
     @PathVariable
     buildingId: Int,
-  ): BuildingDto =
-    buildingService.findById(courtId, buildingId)
+  ): BuildingDto = buildingService.findById(courtId, buildingId)
 
   @GetMapping("/buildings/sub-code/{subCode}")
   @Operation(
@@ -237,8 +230,7 @@ class CourtResource(
     @PathVariable
     @Size(max = 12, min = 2, message = "Building Sub code must be between 2 and 12")
     subCode: String,
-  ): BuildingDto =
-    buildingService.findBySubCode(subCode)
+  ): BuildingDto = buildingService.findBySubCode(subCode)
 
   @GetMapping("/id/{courtId}/buildings/id/{buildingId}/contacts/id/{contactId}")
   @Operation(
@@ -271,8 +263,7 @@ class CourtResource(
     @PathVariable
     buildingId: Int,
     @Schema(description = "Contact ID", example = "11111", required = true) @PathVariable contactId: Int,
-  ): ContactDto =
-    contactService.findById(courtId, buildingId, contactId)
+  ): ContactDto = contactService.findById(courtId, buildingId, contactId)
 
   @GetMapping("/id/{courtId}/buildings/main")
   @Operation(
@@ -301,8 +292,7 @@ class CourtResource(
     @PathVariable
     @Size(max = 6, min = 2, message = "Court ID must be between 2 and 6")
     courtId: String,
-  ): BuildingDto =
-    buildingService.findMainBuilding(courtId)
+  ): BuildingDto = buildingService.findMainBuilding(courtId)
 }
 
 @JsonInclude(NON_NULL)

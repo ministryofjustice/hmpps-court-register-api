@@ -11,12 +11,10 @@ import uk.gov.justice.digital.hmpps.hmppscourtregisterapi.client.sdrs.dto.SDRSRe
 class SDRSApiClient(@Qualifier("standingDataReferenceServiceApiWebClient") private val webClient: WebClient) {
   private inline fun <reified T> typeReference() = object : ParameterizedTypeReference<T>() {}
 
-  fun callSDRS(sdrsRequest: SDRSRequest): SDRSResponse {
-    return webClient.post()
-      .uri("/cld_StandingDataReferenceService/service/sdrs/sdrs/sdrsApi")
-      .bodyValue(sdrsRequest)
-      .retrieve()
-      .bodyToMono(typeReference<SDRSResponse>())
-      .block()!!
-  }
+  fun callSDRS(sdrsRequest: SDRSRequest): SDRSResponse = webClient.post()
+    .uri("/cld_StandingDataReferenceService/service/sdrs/sdrs/sdrsApi")
+    .bodyValue(sdrsRequest)
+    .retrieve()
+    .bodyToMono(typeReference<SDRSResponse>())
+    .block()!!
 }

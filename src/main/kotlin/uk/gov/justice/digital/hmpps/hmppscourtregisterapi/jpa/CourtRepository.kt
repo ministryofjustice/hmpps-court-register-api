@@ -25,7 +25,9 @@ import uk.gov.justice.digital.hmpps.hmppscourtregisterapi.resource.UpdateBuildin
 import java.time.LocalDateTime
 
 @Repository
-interface CourtRepository : PagingAndSortingRepository<Court, String>, CrudRepository<Court, String> {
+interface CourtRepository :
+  PagingAndSortingRepository<Court, String>,
+  CrudRepository<Court, String> {
 
   fun findByActiveOrderById(active: Boolean): List<Court>
 
@@ -120,12 +122,8 @@ data class Court(
     this.active = agency.active
   }
   companion object {
-    fun from(organisationUnit: OrganisationUnit, courtType: CourtType): Court {
-      return Court(organisationUnit.oUCode, organisationUnit.oUCodeL3Name, null, courtType, true)
-    }
+    fun from(organisationUnit: OrganisationUnit, courtType: CourtType): Court = Court(organisationUnit.oUCode, organisationUnit.oUCodeL3Name, null, courtType, true)
 
-    fun from(agency: Agency, courtType: CourtType): Court {
-      return Court(agency.agencyId, agency.description, agency.longDescription ?: agency.description, courtType, agency.active)
-    }
+    fun from(agency: Agency, courtType: CourtType): Court = Court(agency.agencyId, agency.description, agency.longDescription ?: agency.description, courtType, agency.active)
   }
 }

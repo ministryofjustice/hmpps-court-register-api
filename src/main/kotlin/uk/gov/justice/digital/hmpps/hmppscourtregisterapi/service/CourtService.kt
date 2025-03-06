@@ -26,9 +26,7 @@ class CourtService(
     return CourtDto(court)
   }
 
-  fun findByIds(courtIds: List<String>): List<CourtDto> {
-    return courtRepository.findAllById(courtIds).map { CourtDto(it) }
-  }
+  fun findByIds(courtIds: List<String>): List<CourtDto> = courtRepository.findAllById(courtIds).map { CourtDto(it) }
 
   fun findAll(activeOnly: Boolean = false): List<CourtDto> {
     if (activeOnly) {
@@ -42,12 +40,11 @@ class CourtService(
     courtTypeIds: List<String>? = null,
     textSearch: String? = null,
     pageable: Pageable = Pageable.unpaged(),
-  ): Page<CourtDto> =
-    (
-      textSearch
-        ?.let { courtRepository.findPageWithTextSearch(active, courtTypeIds, textSearch, pageable) }
-        ?: courtRepository.findPage(active, courtTypeIds, pageable)
-      ).map { CourtDto(it) }
+  ): Page<CourtDto> = (
+    textSearch
+      ?.let { courtRepository.findPageWithTextSearch(active, courtTypeIds, textSearch, pageable) }
+      ?: courtRepository.findPage(active, courtTypeIds, pageable)
+    ).map { CourtDto(it) }
 
   fun updateCourt(courtId: String, courtUpdateRecord: UpdateCourtDto): CourtDto {
     val court = courtRepository.findById(courtId)
@@ -76,7 +73,5 @@ class CourtService(
     }
   }
 
-  fun getCourtTypes(): List<CourtTypeDto> {
-    return courtTypeRepository.findAll().map { CourtTypeDto(it) }
-  }
+  fun getCourtTypes(): List<CourtTypeDto> = courtTypeRepository.findAll().map { CourtTypeDto(it) }
 }

@@ -56,12 +56,11 @@ class CourtResourcePagingTest : IntegrationTestBase() {
       .jsonPath("$.content[0].active").isEqualTo(false)
   }
 
-  private fun WebTestClient.BodyContentSpec.assertFirstPageOfMany() =
-    this.jsonPath("$.content.length()").isEqualTo(3)
-      .jsonPath("$.size").isEqualTo(3)
-      .jsonPath("$.totalElements").value<Int> { assertThat(it).isGreaterThan(3) }
-      .jsonPath("$.totalPages").value<Int> { assertThat(it).isGreaterThan(1) }
-      .jsonPath("$.last").isEqualTo(false)
+  private fun WebTestClient.BodyContentSpec.assertFirstPageOfMany() = this.jsonPath("$.content.length()").isEqualTo(3)
+    .jsonPath("$.size").isEqualTo(3)
+    .jsonPath("$.totalElements").value<Int> { assertThat(it).isGreaterThan(3) }
+    .jsonPath("$.totalPages").value<Int> { assertThat(it).isGreaterThan(1) }
+    .jsonPath("$.last").isEqualTo(false)
 
   @Test
   fun `find page of active courts`() {
@@ -144,12 +143,11 @@ class CourtResourcePagingTest : IntegrationTestBase() {
       .jsonPath("$.content[2].courtDescription").value<String> { assertThat(it).contains("description") }
   }
 
-  private fun WebTestClient.BodyContentSpec.assertSingleFullPage() =
-    this.jsonPath("$.content.length()").isEqualTo(3)
-      .jsonPath("$.size").isEqualTo(3)
-      .jsonPath("$.totalElements").isEqualTo(3)
-      .jsonPath("$.totalPages").isEqualTo(1)
-      .jsonPath("$.last").isEqualTo(true)
+  private fun WebTestClient.BodyContentSpec.assertSingleFullPage() = this.jsonPath("$.content.length()").isEqualTo(3)
+    .jsonPath("$.size").isEqualTo(3)
+    .jsonPath("$.totalElements").isEqualTo(3)
+    .jsonPath("$.totalPages").isEqualTo(1)
+    .jsonPath("$.last").isEqualTo(true)
 
   @Test
   fun `find page filtered by text search and active`() {

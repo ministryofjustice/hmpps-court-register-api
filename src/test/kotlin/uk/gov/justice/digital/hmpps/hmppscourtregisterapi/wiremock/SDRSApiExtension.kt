@@ -10,7 +10,10 @@ import org.junit.jupiter.api.extension.BeforeEachCallback
 import org.junit.jupiter.api.extension.ExtensionContext
 import uk.gov.justice.digital.hmpps.hmppscourtregisterapi.responses.sdrsapi.singleCourt
 
-class SDRSApiExtension : BeforeAllCallback, AfterAllCallback, BeforeEachCallback {
+class SDRSApiExtension :
+  BeforeAllCallback,
+  AfterAllCallback,
+  BeforeEachCallback {
 
   companion object {
     @JvmField
@@ -34,14 +37,13 @@ class SDRSApiMockServer : WireMockServer(WIREMOCK_PORT) {
     private const val WIREMOCK_PORT = 8332
   }
 
-  fun stubGetSingleCourt(): StubMapping =
-    stubFor(
-      post("/cld_StandingDataReferenceService/service/sdrs/sdrs/sdrsApi")
-        .willReturn(
-          aResponse()
-            .withHeader("Content-Type", "application/json")
-            .withBody(singleCourt())
-            .withStatus(200),
-        ),
-    )
+  fun stubGetSingleCourt(): StubMapping = stubFor(
+    post("/cld_StandingDataReferenceService/service/sdrs/sdrs/sdrsApi")
+      .willReturn(
+        aResponse()
+          .withHeader("Content-Type", "application/json")
+          .withBody(singleCourt())
+          .withStatus(200),
+      ),
+  )
 }

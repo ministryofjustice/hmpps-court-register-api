@@ -1009,15 +1009,10 @@ class CourtResourceTest : IntegrationTestBase() {
     }
   }
 
-  private fun String.loadJson(): String =
-    CourtResourceTest::class.java.getResource("$this.json")?.readText()
-      ?: throw AssertionError("file $this.json not found")
+  private fun String.loadJson(): String = CourtResourceTest::class.java.getResource("$this.json")?.readText()
+    ?: throw AssertionError("file $this.json not found")
 
-  fun auditEventMessageCount(): Int? {
-    return auditSqsClient.countMessagesOnQueue(auditQueue.queueUrl).get()
-  }
+  fun auditEventMessageCount(): Int? = auditSqsClient.countMessagesOnQueue(auditQueue.queueUrl).get()
 
-  fun auditMessage(): String? {
-    return auditSqsClient.receiveMessage(ReceiveMessageRequest.builder().queueUrl(auditQueueUrl).build()).get().messages()[0].body()
-  }
+  fun auditMessage(): String? = auditSqsClient.receiveMessage(ReceiveMessageRequest.builder().queueUrl(auditQueueUrl).build()).get().messages()[0].body()
 }
