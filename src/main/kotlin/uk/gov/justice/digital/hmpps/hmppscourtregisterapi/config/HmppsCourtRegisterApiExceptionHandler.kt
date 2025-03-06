@@ -31,15 +31,14 @@ class HmppsCourtRegisterApiExceptionHandler {
     ).also { log.info("Validation exception: {}", e.message) }
 
   @ExceptionHandler(MissingServletRequestParameterException::class)
-  fun handleMissingServletRequestParameterException(e: MissingServletRequestParameterException): ResponseEntity<ErrorResponse> =
-    ResponseEntity.status(BAD_REQUEST)
-      .body(
-        ErrorResponse(
-          status = BAD_REQUEST,
-          userMessage = "Missing Request Parameter: ${e.message}",
-          developerMessage = e.message,
-        ),
-      ).also { log.info("Missing Request Parameter exception: {}", e.message) }
+  fun handleMissingServletRequestParameterException(e: MissingServletRequestParameterException): ResponseEntity<ErrorResponse> = ResponseEntity.status(BAD_REQUEST)
+    .body(
+      ErrorResponse(
+        status = BAD_REQUEST,
+        userMessage = "Missing Request Parameter: ${e.message}",
+        developerMessage = e.message,
+      ),
+    ).also { log.info("Missing Request Parameter exception: {}", e.message) }
 
   @ExceptionHandler(NoResourceFoundException::class)
   fun handleNoResourceFoundException(e: NoResourceFoundException): ResponseEntity<ErrorResponse> = ResponseEntity
@@ -93,8 +92,7 @@ class HmppsCourtRegisterApiExceptionHandler {
   }
 }
 
-private fun MethodArgumentNotValidException.asErrorList(): List<String> =
-  this.allErrors.mapNotNull { it.defaultMessage }
+private fun MethodArgumentNotValidException.asErrorList(): List<String> = this.allErrors.mapNotNull { it.defaultMessage }
 
 data class ErrorResponse(
   val status: Int,

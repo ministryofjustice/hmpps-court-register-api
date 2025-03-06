@@ -10,7 +10,10 @@ import org.junit.jupiter.api.extension.BeforeEachCallback
 import org.junit.jupiter.api.extension.ExtensionContext
 import uk.gov.justice.digital.hmpps.hmppscourtregisterapi.responses.prisonapi.singleAgency
 
-class PrisonApiExtension : BeforeAllCallback, AfterAllCallback, BeforeEachCallback {
+class PrisonApiExtension :
+  BeforeAllCallback,
+  AfterAllCallback,
+  BeforeEachCallback {
 
   companion object {
     @JvmField
@@ -34,14 +37,13 @@ class PrisonApiMockServer : WireMockServer(WIREMOCK_PORT) {
     private const val WIREMOCK_PORT = 8333
   }
 
-  fun stubGetSingleCourt(): StubMapping =
-    stubFor(
-      get("/api/agencies/type/CRT")
-        .willReturn(
-          aResponse()
-            .withHeader("Content-Type", "application/json")
-            .withBody(singleAgency())
-            .withStatus(200),
-        ),
-    )
+  fun stubGetSingleCourt(): StubMapping = stubFor(
+    get("/api/agencies/type/CRT")
+      .willReturn(
+        aResponse()
+          .withHeader("Content-Type", "application/json")
+          .withBody(singleAgency())
+          .withStatus(200),
+      ),
+  )
 }

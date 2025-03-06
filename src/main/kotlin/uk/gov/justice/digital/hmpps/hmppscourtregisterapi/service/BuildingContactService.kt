@@ -15,9 +15,7 @@ class BuildingContactService(
   private val contactRepository: ContactRepository,
   private val buildingRepository: BuildingRepository,
 ) {
-  fun findById(courtId: String, buildingId: Int, contactId: Int): ContactDto {
-    return ContactDto(getContact(courtId, buildingId, contactId))
-  }
+  fun findById(courtId: String, buildingId: Int, contactId: Int): ContactDto = ContactDto(getContact(courtId, buildingId, contactId))
 
   fun updateContact(courtId: String, buildingId: Int, contactId: Int, updateContactRecord: UpdateContactDto): ContactDto {
     val contact = getContact(courtId, buildingId, contactId)

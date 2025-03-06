@@ -20,11 +20,9 @@ class WebClientConfiguration(
 ) {
 
   @Bean
-  fun standingDataReferenceServiceApiWebClient(builder: WebClient.Builder): WebClient {
-    return builder.baseUrl(standingDataReferenceServiceApiUrl)
-      .defaultHeaders { headers -> headers.addAll(createHeaders()) }
-      .build()
-  }
+  fun standingDataReferenceServiceApiWebClient(builder: WebClient.Builder): WebClient = builder.baseUrl(standingDataReferenceServiceApiUrl)
+    .defaultHeaders { headers -> headers.addAll(createHeaders()) }
+    .build()
 
   @Bean
   fun prisonApiWebClient(authorizedClientManager: OAuth2AuthorizedClientManager): WebClient {

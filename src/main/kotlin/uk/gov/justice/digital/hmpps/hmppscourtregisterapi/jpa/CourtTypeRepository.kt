@@ -17,12 +17,8 @@ data class CourtType(
 ) {
 
   companion object {
-    fun from(oUCodeL1Name: String): CourtType {
-      return CourtType(oUCodeL1Name.uppercase().replace(" ", ""), oUCodeL1Name)
-    }
+    fun from(oUCodeL1Name: String): CourtType = CourtType(oUCodeL1Name.uppercase().replace(" ", ""), oUCodeL1Name)
 
-    fun from(agency: Agency): CourtType {
-      return CourtType(agency.courtType ?: "UNK", agency.courtTypeDescription ?: "Unknown")
-    }
+    fun from(agency: Agency): CourtType = CourtType(agency.courtType ?: "UNK", agency.courtTypeDescription ?: "Unknown")
   }
 }

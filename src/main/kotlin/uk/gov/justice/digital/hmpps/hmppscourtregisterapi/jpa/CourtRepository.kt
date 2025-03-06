@@ -25,7 +25,9 @@ import uk.gov.justice.digital.hmpps.hmppscourtregisterapi.resource.UpdateBuildin
 import java.time.LocalDateTime
 
 @Repository
-interface CourtRepository : PagingAndSortingRepository<Court, String>, CrudRepository<Court, String> {
+interface CourtRepository :
+  PagingAndSortingRepository<Court, String>,
+  CrudRepository<Court, String> {
 
   fun findByActiveOrderById(active: Boolean): List<Court>
 
@@ -33,7 +35,7 @@ interface CourtRepository : PagingAndSortingRepository<Court, String>, CrudRepos
     """
     select distinct c from Court c 
     where (:active is null or c.active = :active) 
-    and (coalesce(:courtTypeIds) is null or c.courtType.id in (:courtTypeIds))
+    and (coalesce(:#{#courtTypeIds}) is null or c.courtType.id in (:#{#courtTypeIds}))
   """,
   )
   fun findPage(
@@ -49,8 +51,8 @@ interface CourtRepository : PagingAndSortingRepository<Court, String>, CrudRepos
     select c from Court c where c in ( 
       select distinct c from Court c
       join CourtTextSearch ts on c.id = ts.id
-      where (:active is null or c.active = :active) 
-      and (coalesce(:courtTypeIds) is null or c.courtType.id in (:courtTypeIds))
+      where (:#{#active} is null or c.active = :#{#active}) 
+      and (coalesce(:#{#courtTypeIds}) is null or c.courtType.id in (:#{#courtTypeIds}))
       and (search_court_text(:textSearch) = true)
     )
   """,
@@ -120,12 +122,8 @@ data class Court(
     this.active = agency.active
   }
   companion object {
-    fun from(organisationUnit: OrganisationUnit, courtType: CourtType): Court {
-      return Court(organisationUnit.oUCode, organisationUnit.oUCodeL3Name, null, courtType, true)
-    }
+    fun from(organisationUnit: OrganisationUnit, courtType: CourtType): Court = Court(organisationUnit.oUCode, organisationUnit.oUCodeL3Name, null, courtType, true)
 
-    fun from(agency: Agency, courtType: CourtType): Court {
-      return Court(agency.agencyId, agency.description, agency.longDescription ?: agency.description, courtType, agency.active)
-    }
+    fun from(agency: Agency, courtType: CourtType): Court = Court(agency.agencyId, agency.description, agency.longDescription ?: agency.description, courtType, agency.active)
   }
 }
