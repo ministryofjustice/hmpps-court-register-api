@@ -35,7 +35,7 @@ interface CourtRepository :
     """
     select distinct c from Court c 
     where (:active is null or c.active = :active) 
-    and (coalesce(:courtTypeIds) is null or c.courtType.id in (:courtTypeIds))
+    and (coalesce(:#{#courtTypeIds}) is null or c.courtType.id in (:#{#courtTypeIds}))
   """,
   )
   fun findPage(
@@ -51,8 +51,8 @@ interface CourtRepository :
     select c from Court c where c in ( 
       select distinct c from Court c
       join CourtTextSearch ts on c.id = ts.id
-      where (:active is null or c.active = :active) 
-      and (coalesce(:courtTypeIds) is null or c.courtType.id in (:courtTypeIds))
+      where (:#{#active} is null or c.active = :#{#active}) 
+      and (coalesce(:#{#courtTypeIds}) is null or c.courtType.id in (:#{#courtTypeIds}))
       and (search_court_text(:textSearch) = true)
     )
   """,
