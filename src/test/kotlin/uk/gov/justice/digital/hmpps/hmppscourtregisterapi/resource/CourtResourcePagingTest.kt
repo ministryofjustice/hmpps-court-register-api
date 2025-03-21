@@ -234,4 +234,14 @@ class CourtResourcePagingTest : IntegrationTestBase() {
       .jsonPath("$.totalElements").isEqualTo(1)
       .jsonPath("$.content[0].courtId").isEqualTo("PRESCC")
   }
+
+  @Test
+  fun `a search using a partial word returns the correct match`() {
+    webTestClient.get().uri("/courts/paged?page=0&size=53&textSearch=berdee")
+      .exchange()
+      .expectStatus().isOk
+      .expectBody()
+      .jsonPath("$.totalElements").isEqualTo(1)
+      .jsonPath("$.content[0].courtName").isEqualTo("Aberdeen Sheriff's Court (ABDSHF)")
+  }
 }

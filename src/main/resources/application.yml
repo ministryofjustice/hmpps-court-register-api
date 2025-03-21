@@ -28,9 +28,6 @@ spring:
     generate-ddl: false
     hibernate:
       ddl-auto: validate
-    properties:
-      hibernate:
-        metadata_builder_contributor: uk.gov.justice.digital.hmpps.hmppscourtregisterapi.jpa.TextSearchSqlFunctionTemplate
   security:
     oauth2:
       resourceserver:

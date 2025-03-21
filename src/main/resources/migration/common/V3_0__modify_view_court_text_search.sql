@@ -1,28 +1,8 @@
 DROP VIEW IF EXISTS court_text_search;
 
-CREATE OR REPLACE VIEW public.court_text_search AS
+CREATE OR REPLACE VIEW court_text_search AS
 SELECT DISTINCT
     c.id,
-    to_tsvector(
-            concat_ws(
-                    ' ',
-                    c.id,
-                    c.court_name,
-                    c.court_description,
-                    ct.description,
-                    COALESCE(b.sub_code, ''),
-                    COALESCE(b.address_line1, ''),
-                    COALESCE(b.address_line2, ''),
-                    COALESCE(b.address_line3, ''),
-                    COALESCE(b.address_line4, ''),
-                    COALESCE(b.address_line5, ''),
-                    COALESCE(b.postcode, ''),
-                    regexp_replace(COALESCE(b.postcode, ''), ' ', '', 'g'),
-                    COALESCE(cn.type, ''),
-                    COALESCE(cn.detail, ''),
-                    regexp_replace(COALESCE(cn.detail, ''), ' ', '', 'g')
-            )
-    ) AS textsearchvector,
     concat_ws(
             ' ',
             c.id,
