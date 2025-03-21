@@ -15,6 +15,7 @@ import org.hibernate.type.StandardBasicTypes
 data class CourtTextSearch(
   @Id
   val id: String,
+  val plainTextSearch: String,
 )
 
 class TextSearchSqlFunctionTemplate : MetadataBuilderContributor {

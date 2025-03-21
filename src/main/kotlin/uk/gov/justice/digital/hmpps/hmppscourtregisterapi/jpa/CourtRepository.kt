@@ -53,7 +53,7 @@ interface CourtRepository :
       join CourtTextSearch ts on c.id = ts.id
       where (:#{#active} is null or c.active = :#{#active}) 
       and (coalesce(:#{#courtTypeIds}) is null or c.courtType.id in (:#{#courtTypeIds}))
-      and (search_court_text(:textSearch) = true)
+      and lower(ts.plainTextSearch) like lower(concat('%', :textSearch, '%'))
     )
   """,
   )
