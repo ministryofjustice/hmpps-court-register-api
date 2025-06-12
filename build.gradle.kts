@@ -17,7 +17,7 @@ dependencies {
   implementation("org.springframework.boot:spring-boot-starter-oauth2-client")
 
   implementation("org.flywaydb:flyway-database-postgresql")
-  runtimeOnly("org.postgresql:postgresql")
+  runtimeOnly("org.postgresql:postgresql:42.7.7")
 
   implementation("javax.transaction:javax.transaction-api:1.3")
   implementation("javax.xml.bind:jaxb-api:2.3.1")
