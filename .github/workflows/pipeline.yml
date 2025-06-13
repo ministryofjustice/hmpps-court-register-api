@@ -46,7 +46,7 @@ jobs:
     if: github.ref == 'refs/heads/main'
     uses: ministryofjustice/hmpps-github-actions/.github/workflows/docker_build.yml@v2 # WORKFLOW_VERSION
     needs:
-      - kotlin_validate
+      - gradle-validate
     with:
       docker_registry: 'ghcr.io'
       registry_org: 'ministryofjustice'
