@@ -31,17 +31,16 @@ jobs:
     secrets: inherit
     with:
       environment: ${{ matrix.environments }}
-  kotlin_validate:
-    name: Validate the kotlin
-    uses: ./.github/workflows/kotlin_localstack_postgres_validate.yml # LOCAL_VERSION
+  gradle-validate:
+    name: Run the tests
+    uses: ministryofjustice/hmpps-github-actions/.github/workflows/gradle_localstack_postgres_verify.yml@v2 # WORKFLOW_VERSION
     secrets: inherit
     with:
-      services: sqs,sns
-      localstack_tag: "3"
-      postgres_tag: "16"
-      postgres_db: court_register_db
-      postgres_username: admin
-      postgres_password: admin_password
+      localstack-tag: "3"
+      postgres-tag: "16"
+      postgres-db: court_register_db
+      postgres-username: admin
+      postgres-password: admin_password
   build:
     name: Build docker image from hmpps-github-actions
     if: github.ref == 'refs/heads/main'
