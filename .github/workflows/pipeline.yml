@@ -1,6 +1,5 @@
 name: Pipeline [test -> build -> deploy]
 on:
-  merge_group:
   push:
     branches:
       - '**'
