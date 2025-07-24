@@ -9,6 +9,11 @@
       "groupName": "all non major Gradle dependencies",
       "groupSlug": "all-gradle-minor-patch",
       "automerge": true
+    },
+    {
+      "matchUpdateTypes": ["minor", "patch"],
+      "matchCurrentVersion": "!/^0/",
+      "automerge": true
     }
   ]
 }
