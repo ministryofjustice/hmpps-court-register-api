@@ -38,7 +38,7 @@ class PrisonApiMockServer : WireMockServer(WIREMOCK_PORT) {
   }
 
   fun stubGetSingleCourt(): StubMapping = stubFor(
-    get("/api/agencies/type/CRT")
+    get("/api/agencies/type/CRT?activeOnly=false")
       .willReturn(
         aResponse()
           .withHeader("Content-Type", "application/json")
