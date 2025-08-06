@@ -11,7 +11,11 @@ class PrisonApiClient(@Qualifier("prisonApiWebClient") private val webClient: We
   private inline fun <reified T> typeReference() = object : ParameterizedTypeReference<T>() {}
 
   fun getCourtAgencies(): List<Agency> = webClient.get()
-    .uri("/api/agencies/type/CRT")
+    .uri {
+      it.path("/api/agencies/type/CRT")
+        .queryParam("activeOnly", false)
+        .build()
+    }
     .retrieve()
     .bodyToMono(typeReference<List<Agency>>())
     .block()!!
