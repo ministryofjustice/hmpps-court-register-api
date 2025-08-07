@@ -1,0 +1,25 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/court_register_db
+    username: admin
+    password: admin_password
+
+hmpps.sqs:
+  provider: localstack
+  queues:
+    audit:
+      queueName: ${random.uuid}
+  topics:
+    domainevents:
+      arn: arn:aws:sns:eu-west-2:000000000000:${random.uuid}
+
+oauth:
+  endpoint.url: http://localhost:8090/auth
+
+prison:
+  api:
+    url: http://localhost:8333
+
+sdrs:
+  api:
+    url: http://localhost:8332
