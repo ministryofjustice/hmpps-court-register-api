@@ -1,6 +1,6 @@
 generic-service:
   nameOverride: hmpps-court-register-api
-  productId: "HMPPS538" # productId for the product that this belongs too, i.e. DPS001, see README.md for details
+  productId: "DPS109" # productId for the product that this belongs too, i.e. DPS001, see README.md for details
   serviceAccountName: hmpps-court-register-api
   replicaCount: 4
 
