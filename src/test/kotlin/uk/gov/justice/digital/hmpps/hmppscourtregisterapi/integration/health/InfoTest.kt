@@ -16,7 +16,7 @@ class InfoTest : IntegrationTestBase() {
       .expectStatus()
       .isOk
       .expectBody()
-      .jsonPath("build.name").isEqualTo("hmpps-court-register-api")
+      .jsonPath("build.name").isEqualTo("hmpps-template-kotlin")
   }
 
   @Test
