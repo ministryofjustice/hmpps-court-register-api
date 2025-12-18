@@ -1,12 +1,8 @@
 package uk.gov.justice.digital.hmpps.hmppscourtregisterapi.integration
 
 import io.swagger.v3.parser.OpenAPIV3Parser
-import net.minidev.json.JSONArray
 import org.assertj.core.api.Assertions
-import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.params.ParameterizedTest
-import org.junit.jupiter.params.provider.CsvSource
 import org.springframework.boot.test.web.server.LocalServerPort
 import org.springframework.http.MediaType
 import java.time.LocalDate
@@ -52,5 +48,4 @@ class OpenApiDocsTest : IntegrationTestBase() {
     val result = OpenAPIV3Parser().readLocation("http://localhost:$port/v3/api-docs", null, null)
     Assertions.assertThat(result.messages).isEmpty()
   }
-
 }
