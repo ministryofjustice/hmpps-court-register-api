@@ -19,12 +19,12 @@ class CourtBuildingMaintenanceIntTest : IntegrationTestBase() {
       webTestClient.put().uri("court-maintenance/id/ABDRCT/buildings/767")
         .accept(MediaType.APPLICATION_JSON)
         .contentType(MediaType.APPLICATION_JSON)
-        .headers(
-          setAuthorisation(
+        .headers {
+          it.authToken(
             roles = listOf("ROLE_COURT_REGISTER__COURT_DETAILS__RW"),
             user = "bobby.beans",
-          ),
-        )
+          )
+        }
         .body(
           BodyInserters.fromValue(
             """
@@ -55,12 +55,12 @@ class CourtBuildingMaintenanceIntTest : IntegrationTestBase() {
       webTestClient.put().uri("court-maintenance/id/ABDRCT/buildings/767")
         .accept(MediaType.APPLICATION_JSON)
         .contentType(MediaType.APPLICATION_JSON)
-        .headers(
-          setAuthorisation(
+        .headers {
+          it.authToken(
             roles = listOf("ROLE_COURT_REGISTER__COURT_DETAILS__RW"),
             user = "bobby.beans",
-          ),
-        )
+          )
+        }
         .body(
           BodyInserters.fromValue(
             """
@@ -90,12 +90,12 @@ class CourtBuildingMaintenanceIntTest : IntegrationTestBase() {
       webTestClient.put().uri("court-maintenance/id/ABDRCT/buildings/767")
         .accept(MediaType.APPLICATION_JSON)
         .contentType(MediaType.APPLICATION_JSON)
-        .headers(
-          setAuthorisation(
+        .headers {
+          it.authToken(
             roles = listOf("ROLE_COURT_REGISTER__COURT_DETAILS__RW"),
             user = "bobby.beans",
-          ),
-        )
+          )
+        }
         .body(
           BodyInserters.fromValue(
             """
@@ -119,12 +119,12 @@ class CourtBuildingMaintenanceIntTest : IntegrationTestBase() {
       webTestClient.put().uri("court-maintenance/id/ABDRCT/buildings/767")
         .accept(MediaType.APPLICATION_JSON)
         .contentType(MediaType.APPLICATION_JSON)
-        .headers(
-          setAuthorisation(
+        .headers {
+          it.authToken(
             roles = listOf("ROLE_COURT_REGISTER__COURT_DETAILS__RW"),
             user = "bobby.beans",
-          ),
-        )
+          )
+        }
         .body(
           BodyInserters.fromValue(
             """
@@ -148,12 +148,12 @@ class CourtBuildingMaintenanceIntTest : IntegrationTestBase() {
       webTestClient.post().uri("court-maintenance/id/BRMNCC/buildings")
         .accept(MediaType.APPLICATION_JSON)
         .contentType(MediaType.APPLICATION_JSON)
-        .headers(
-          setAuthorisation(
+        .headers {
+          it.authToken(
             roles = listOf("ROLE_COURT_REGISTER__COURT_DETAILS__RW"),
             user = "bobby.beans",
-          ),
-        )
+          )
+        }
         .body(
           BodyInserters.fromValue(
             """
@@ -177,12 +177,12 @@ class CourtBuildingMaintenanceIntTest : IntegrationTestBase() {
       webTestClient.post().uri("court-maintenance/id/AYLSYC/buildings")
         .accept(MediaType.APPLICATION_JSON)
         .contentType(MediaType.APPLICATION_JSON)
-        .headers(
-          setAuthorisation(
+        .headers {
+          it.authToken(
             roles = listOf("ROLE_COURT_REGISTER__COURT_DETAILS__RW"),
             user = "bobby.beans",
-          ),
-        )
+          )
+        }
         .body(
           BodyInserters.fromValue(
             """

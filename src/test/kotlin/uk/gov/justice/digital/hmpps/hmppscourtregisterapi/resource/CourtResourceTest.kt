@@ -114,7 +114,9 @@ class CourtResourceTest : IntegrationTestBase() {
       webTestClient.put()
         .uri("/court-maintenance/id/ACCRYC")
         .accept(MediaType.APPLICATION_JSON)
-        .headers(setAuthorisation(roles = listOf("ROLE_DUMMY")))
+        .headers {
+          it.authToken(roles = listOf("ROLE_DUMMY"))
+        }
         .body(BodyInserters.fromValue(UpdateCourtDto("Updated Court", "a description", "YOUTH", false)))
         .exchange()
         .expectStatus().isForbidden
@@ -129,12 +131,12 @@ class CourtResourceTest : IntegrationTestBase() {
       webTestClient.put()
         .uri("/court-maintenance/id/ACCRYC")
         .accept(MediaType.APPLICATION_JSON)
-        .headers(
-          setAuthorisation(
+        .headers {
+          it.authToken(
             roles = listOf("ROLE_COURT_REGISTER__COURT_DETAILS__RW"),
             user = "bobby.beans",
-          ),
-        )
+          )
+        }
         .body(BodyInserters.fromValue(UpdateCourtDto("Updated Court", "a description", "YOUTH", false)))
         .exchange()
         .expectStatus().isOk
@@ -159,7 +161,12 @@ class CourtResourceTest : IntegrationTestBase() {
       webTestClient.put()
         .uri("/court-maintenance/id/ACCRYC")
         .accept(MediaType.APPLICATION_JSON)
-        .headers(setAuthorisation(roles = listOf("ROLE_COURT_REGISTER__COURT_DETAILS__RW")))
+        .headers {
+          it.authToken(
+            roles = listOf("ROLE_COURT_REGISTER__COURT_DETAILS__RW"),
+            user = "bobby.beans",
+          )
+        }
         .body(
           BodyInserters.fromValue(
             mapOf(
@@ -190,12 +197,12 @@ class CourtResourceTest : IntegrationTestBase() {
       webTestClient.post()
         .uri("/court-maintenance")
         .accept(MediaType.APPLICATION_JSON)
-        .headers(
-          setAuthorisation(
+        .headers {
+          it.authToken(
             roles = listOf("ROLE_COURT_REGISTER__COURT_DETAILS__RW"),
             user = "bobby.beans",
-          ),
-        )
+          )
+        }
         .body(
           BodyInserters.fromValue(
             mapOf(
@@ -258,12 +265,12 @@ class CourtResourceTest : IntegrationTestBase() {
       webTestClient.post()
         .uri("/court-maintenance")
         .accept(MediaType.APPLICATION_JSON)
-        .headers(
-          setAuthorisation(
+        .headers {
+          it.authToken(
             roles = listOf("ROLE_COURT_REGISTER__COURT_DETAILS__RW"),
             user = "bobby.beans",
-          ),
-        )
+          )
+        }
         .body(
           BodyInserters.fromValue(
             InsertCourtDto(
@@ -299,7 +306,12 @@ class CourtResourceTest : IntegrationTestBase() {
       webTestClient.post()
         .uri("/court-maintenance")
         .accept(MediaType.APPLICATION_JSON)
-        .headers(setAuthorisation(roles = listOf("ROLE_COURT_REGISTER__COURT_DETAILS__RW")))
+        .headers {
+          it.authToken(
+            roles = listOf("ROLE_COURT_REGISTER__COURT_DETAILS__RW"),
+            user = "bobby.beans",
+          )
+        }
         .body(
           BodyInserters.fromValue(
             mapOf(
@@ -396,7 +408,9 @@ class CourtResourceTest : IntegrationTestBase() {
       webTestClient.put()
         .uri("/court-maintenance/id/ACCRYC/buildings/1")
         .accept(MediaType.APPLICATION_JSON)
-        .headers(setAuthorisation(roles = listOf("ROLE_DUMMY")))
+        .headers {
+          it.authToken(roles = listOf("ROLE_DUMMY"))
+        }
         .body(
           BodyInserters.fromValue(
             UpdateBuildingDto(
@@ -441,12 +455,12 @@ class CourtResourceTest : IntegrationTestBase() {
       webTestClient.put()
         .uri("/court-maintenance/id/ACCRYC/buildings/1")
         .accept(MediaType.APPLICATION_JSON)
-        .headers(
-          setAuthorisation(
+        .headers {
+          it.authToken(
             roles = listOf("ROLE_COURT_REGISTER__COURT_DETAILS__RW"),
             user = "bobby.beans",
-          ),
-        )
+          )
+        }
         .body(
           BodyInserters.fromValue(
             UpdateBuildingDto(
@@ -505,12 +519,12 @@ class CourtResourceTest : IntegrationTestBase() {
       webTestClient.put()
         .uri("/court-maintenance/id/ACCRYC/buildings/2")
         .accept(MediaType.APPLICATION_JSON)
-        .headers(
-          setAuthorisation(
+        .headers {
+          it.authToken(
             roles = listOf("ROLE_COURT_REGISTER__COURT_DETAILS__RW"),
             user = "bobby.beans",
-          ),
-        )
+          )
+        }
         .body(
           BodyInserters.fromValue(
             UpdateBuildingDto(
@@ -569,12 +583,12 @@ class CourtResourceTest : IntegrationTestBase() {
       webTestClient.put()
         .uri("/court-maintenance/id/ACCRYC/buildings/1")
         .accept(MediaType.APPLICATION_JSON)
-        .headers(
-          setAuthorisation(
+        .headers {
+          it.authToken(
             roles = listOf("ROLE_COURT_REGISTER__COURT_DETAILS__RW"),
             user = "bobby.beans",
-          ),
-        )
+          )
+        }
         .body(
           BodyInserters.fromValue(
             UpdateBuildingDto(
@@ -633,12 +647,12 @@ class CourtResourceTest : IntegrationTestBase() {
       webTestClient.post()
         .uri("/court-maintenance/id/ACCRYD/buildings")
         .accept(MediaType.APPLICATION_JSON)
-        .headers(
-          setAuthorisation(
+        .headers {
+          it.authToken(
             roles = listOf("ROLE_COURT_REGISTER__COURT_DETAILS__RW"),
             user = "bobby.beans",
-          ),
-        )
+          )
+        }
         .body(
           BodyInserters.fromValue(
             UpdateBuildingDto(
@@ -701,12 +715,12 @@ class CourtResourceTest : IntegrationTestBase() {
       webTestClient.post()
         .uri("/court-maintenance/id/ACCRYD/buildings")
         .accept(MediaType.APPLICATION_JSON)
-        .headers(
-          setAuthorisation(
+        .headers {
+          it.authToken(
             roles = listOf("ROLE_COURT_REGISTER__COURT_DETAILS__RW"),
             user = "bobby.beans",
-          ),
-        )
+          )
+        }
         .body(
           BodyInserters.fromValue(
             UpdateBuildingDto(
@@ -769,12 +783,12 @@ class CourtResourceTest : IntegrationTestBase() {
       webTestClient.post()
         .uri("/court-maintenance/id/ACCRYD/buildings")
         .accept(MediaType.APPLICATION_JSON)
-        .headers(
-          setAuthorisation(
+        .headers {
+          it.authToken(
             roles = listOf("ROLE_COURT_REGISTER__COURT_DETAILS__RW"),
             user = "bobby.beans",
-          ),
-        )
+          )
+        }
         .body(
           BodyInserters.fromValue(
             UpdateBuildingDto(
@@ -820,7 +834,9 @@ class CourtResourceTest : IntegrationTestBase() {
       webTestClient.put()
         .uri("/court-maintenance/id/ACCRYC/buildings/1/contacts/1")
         .accept(MediaType.APPLICATION_JSON)
-        .headers(setAuthorisation(roles = listOf("ROLE_DUMMY")))
+        .headers {
+          it.authToken(roles = listOf("ROLE_DUMMY"))
+        }
         .body(BodyInserters.fromValue(UpdateContactDto("TEL", "5555 666666")))
         .exchange()
         .expectStatus().isForbidden
@@ -850,12 +866,12 @@ class CourtResourceTest : IntegrationTestBase() {
       webTestClient.put()
         .uri("/court-maintenance/id/ACCRYC/buildings/1/contacts/1")
         .accept(MediaType.APPLICATION_JSON)
-        .headers(
-          setAuthorisation(
+        .headers {
+          it.authToken(
             roles = listOf("ROLE_COURT_REGISTER__COURT_DETAILS__RW"),
             user = "bobby.beans",
-          ),
-        )
+          )
+        }
         .body(BodyInserters.fromValue(UpdateContactDto("TEL", "7777 22222222")))
         .exchange()
         .expectStatus().isOk
@@ -899,12 +915,12 @@ class CourtResourceTest : IntegrationTestBase() {
       webTestClient.put()
         .uri("/court-maintenance/id/ACCRYC/buildings/1/contacts/1")
         .accept(MediaType.APPLICATION_JSON)
-        .headers(
-          setAuthorisation(
+        .headers {
+          it.authToken(
             roles = listOf("ROLE_COURT_REGISTER__COURT_DETAILS__RW"),
             user = "bobby.beans",
-          ),
-        )
+          )
+        }
         .body(BodyInserters.fromValue(UpdateContactDto("TEL", "1".repeat(81))))
         .exchange()
         .expectStatus().isBadRequest
@@ -941,12 +957,12 @@ class CourtResourceTest : IntegrationTestBase() {
       webTestClient.post()
         .uri("/court-maintenance/id/ACCRYC/buildings/1/contacts")
         .accept(MediaType.APPLICATION_JSON)
-        .headers(
-          setAuthorisation(
+        .headers {
+          it.authToken(
             roles = listOf("ROLE_COURT_REGISTER__COURT_DETAILS__RW"),
             user = "bobby.beans",
-          ),
-        )
+          )
+        }
         .body(BodyInserters.fromValue(UpdateContactDto("EMAIL", "test@test.com")))
         .exchange()
         .expectStatus().isCreated
@@ -997,12 +1013,12 @@ class CourtResourceTest : IntegrationTestBase() {
       webTestClient.post()
         .uri("/court-maintenance/id/ACCRYC/buildings/1/contacts")
         .accept(MediaType.APPLICATION_JSON)
-        .headers(
-          setAuthorisation(
+        .headers {
+          it.authToken(
             roles = listOf("ROLE_COURT_REGISTER__COURT_DETAILS__RW"),
             user = "bobby.beans",
-          ),
-        )
+          )
+        }
         .body(BodyInserters.fromValue(UpdateContactDto("TEL", "1".repeat(81))))
         .exchange()
         .expectStatus().isBadRequest
