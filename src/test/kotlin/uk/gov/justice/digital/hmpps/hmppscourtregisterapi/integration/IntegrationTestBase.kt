@@ -18,6 +18,7 @@ import uk.gov.justice.digital.hmpps.hmppscourtregisterapi.helper.JwtAuthHelper
 import uk.gov.justice.digital.hmpps.hmppscourtregisterapi.testcontainers.LocalStackContainer
 import uk.gov.justice.digital.hmpps.hmppscourtregisterapi.testcontainers.PostgresContainer
 import uk.gov.justice.digital.hmpps.hmppscourtregisterapi.wiremock.HmppsAuthApiExtension
+import uk.gov.justice.digital.hmpps.hmppscourtregisterapi.wiremock.HmppsAuthApiExtension.Companion.hmppsAuth
 import uk.gov.justice.digital.hmpps.hmppscourtregisterapi.wiremock.PrisonApiExtension
 import uk.gov.justice.digital.hmpps.hmppscourtregisterapi.wiremock.SDRSApiExtension
 import uk.gov.justice.hmpps.sqs.HmppsQueueService
@@ -61,6 +62,10 @@ abstract class IntegrationTestBase {
     user: String = "court-reg-client",
     roles: List<String> = listOf(),
   ): (HttpHeaders) -> Unit = jwtAuthHelper.setAuthorisation(user, roles)
+
+  protected fun stubPingWithResponse(status: Int) {
+    hmppsAuth.stubHealthPing(status)
+  }
 
   companion object {
     private val pgContainer = PostgresContainer.instance
