@@ -14,14 +14,15 @@ import org.springframework.test.context.DynamicPropertyRegistry
 import org.springframework.test.context.DynamicPropertySource
 import org.springframework.test.web.reactive.server.WebTestClient
 import software.amazon.awssdk.services.sqs.model.PurgeQueueRequest
-import uk.gov.justice.digital.hmpps.hmppscourtregisterapi.helper.JwtAuthHelper
 import uk.gov.justice.digital.hmpps.hmppscourtregisterapi.testcontainers.LocalStackContainer
 import uk.gov.justice.digital.hmpps.hmppscourtregisterapi.testcontainers.PostgresContainer
 import uk.gov.justice.digital.hmpps.hmppscourtregisterapi.wiremock.HmppsAuthApiExtension
+import uk.gov.justice.digital.hmpps.hmppscourtregisterapi.wiremock.HmppsAuthApiExtension.Companion.hmppsAuth
 import uk.gov.justice.digital.hmpps.hmppscourtregisterapi.wiremock.PrisonApiExtension
 import uk.gov.justice.digital.hmpps.hmppscourtregisterapi.wiremock.SDRSApiExtension
 import uk.gov.justice.hmpps.sqs.HmppsQueueService
 import uk.gov.justice.hmpps.sqs.countMessagesOnQueue
+import uk.gov.justice.hmpps.test.kotlin.auth.JwtAuthorisationHelper
 
 @ExtendWith(SDRSApiExtension::class, PrisonApiExtension::class, HmppsAuthApiExtension::class)
 @SpringBootTest(webEnvironment = RANDOM_PORT)
@@ -33,7 +34,7 @@ abstract class IntegrationTestBase {
   lateinit var webTestClient: WebTestClient
 
   @Autowired
-  protected lateinit var jwtAuthHelper: JwtAuthHelper
+  protected lateinit var jwtAuthHelper: JwtAuthorisationHelper
 
   @Autowired
   protected lateinit var hmppsQueueService: HmppsQueueService
@@ -57,10 +58,19 @@ abstract class IntegrationTestBase {
     await untilCallTo { auditQueue.sqsClient.countMessagesOnQueue(auditQueue.queueUrl).get() } matches { it == 0 }
   }
 
-  internal fun setAuthorisation(
-    user: String = "court-reg-client",
-    roles: List<String> = listOf(),
-  ): (HttpHeaders) -> Unit = jwtAuthHelper.setAuthorisation(user, roles)
+  internal fun HttpHeaders.authToken(roles: List<String> = emptyList(), user: String = "court-reg-client") {
+    this.setBearerAuth(
+      jwtAuthHelper.createJwtAccessToken(
+        roles = roles,
+        clientId = "some-client",
+        username = user,
+      ),
+    )
+  }
+
+  protected fun stubPingWithResponse(status: Int) {
+    hmppsAuth.stubHealthPing(status)
+  }
 
   companion object {
     private val pgContainer = PostgresContainer.instance
