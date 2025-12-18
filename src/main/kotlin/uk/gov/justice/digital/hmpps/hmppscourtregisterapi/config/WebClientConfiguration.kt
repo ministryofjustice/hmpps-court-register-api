@@ -14,12 +14,20 @@ import org.springframework.util.MultiValueMap
 import org.springframework.util.unit.DataSize
 import org.springframework.web.reactive.function.client.ExchangeStrategies
 import org.springframework.web.reactive.function.client.WebClient
+import uk.gov.justice.hmpps.kotlin.auth.healthWebClient
+import java.time.Duration
 
 @Configuration
 class WebClientConfiguration(
-  @Value("\${sdrs.api.url}") private val standingDataReferenceServiceApiUrl: String,
-  @Value("\${prison.api.url}") private val prisonApiUri: String,
+  @param:Value("\${sdrs.api.url}") private val standingDataReferenceServiceApiUrl: String,
+  @param:Value("\${prison.api.url}") private val prisonApiUri: String,
+  @param:Value("\${oauth.endpoint.url}") val hmppsAuthBaseUri: String,
+  @param:Value("\${api.health-timeout:2s}") val healthTimeout: Duration,
 ) {
+
+  // HMPPS Auth health ping is required if your service calls HMPPS Auth to get a token to call other services
+  @Bean
+  fun hmppsAuthHealthWebClient(builder: WebClient.Builder): WebClient = builder.healthWebClient(hmppsAuthBaseUri, healthTimeout)
 
   @Bean
   fun standingDataReferenceServiceApiWebClient(builder: WebClient.Builder): WebClient = builder.baseUrl(standingDataReferenceServiceApiUrl)
