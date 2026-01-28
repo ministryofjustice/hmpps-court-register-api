@@ -10,7 +10,6 @@ import org.springframework.security.oauth2.client.OAuth2AuthorizedClientProvider
 import org.springframework.security.oauth2.client.OAuth2AuthorizedClientService
 import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository
 import org.springframework.security.oauth2.client.web.reactive.function.client.ServletOAuth2AuthorizedClientExchangeFilterFunction
-import org.springframework.util.MultiValueMap
 import org.springframework.util.unit.DataSize
 import org.springframework.web.reactive.function.client.ExchangeStrategies
 import org.springframework.web.reactive.function.client.WebClient
@@ -58,7 +57,7 @@ class WebClientConfiguration(
     setAuthorizedClientProvider(OAuth2AuthorizedClientProviderBuilder.builder().clientCredentials().build())
   }
 
-  private fun createHeaders(): MultiValueMap<String, String> {
+  private fun createHeaders(): HttpHeaders {
     val headers = HttpHeaders()
     headers.add(HttpHeaders.CONTENT_TYPE, "application/json")
     headers.add(HttpHeaders.ACCEPT, "application/json")

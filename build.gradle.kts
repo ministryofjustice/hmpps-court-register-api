@@ -6,19 +6,21 @@ plugins {
 
 configurations {
   testImplementation { exclude(group = "org.junit.vintage") }
+//  implementation { exclude(group = "com.fasterxml.jackson.module", module = "jackson-module-kotlin") }
 }
 
 dependencies {
   implementation("uk.gov.justice.service.hmpps:hmpps-kotlin-spring-boot-starter:2.0.0")
   implementation("org.springframework.boot:spring-boot-starter-webflux")
   implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-
+  implementation("org.springframework.boot:spring-boot-starter-flyway")
+  implementation("org.springframework.boot:spring-boot-starter-webclient")
   implementation("org.springframework.boot:spring-boot-starter-security")
   implementation("org.springframework.boot:spring-boot-starter-oauth2-resource-server")
   implementation("org.springframework.boot:spring-boot-starter-oauth2-client")
 
-  implementation("org.flywaydb:flyway-database-postgresql")
-  runtimeOnly("org.postgresql:postgresql:42.7.9")
+  runtimeOnly("org.flywaydb:flyway-database-postgresql")
+  runtimeOnly("org.postgresql:postgresql")
 
   implementation("javax.transaction:javax.transaction-api:1.3")
   implementation("javax.xml.bind:jaxb-api:2.3.1")
@@ -31,6 +33,7 @@ dependencies {
 
   testImplementation("org.springframework.security:spring-security-test")
   testImplementation("uk.gov.justice.service.hmpps:hmpps-kotlin-spring-boot-starter-test:2.0.0")
+  testImplementation("org.springframework.boot:spring-boot-starter-webflux-test")
   testImplementation("org.wiremock:wiremock-standalone:3.13.2")
   testImplementation("net.javacrumbs.json-unit:json-unit-assertj:5.1.0")
   testImplementation("org.testcontainers:localstack:1.21.4")
@@ -49,6 +52,8 @@ java {
   sourceCompatibility = JavaVersion.VERSION_24
   targetCompatibility = JavaVersion.VERSION_24
 }
+
+extra["hibernate.version"] = "7.2.2.Final"
 
 tasks {
   withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {

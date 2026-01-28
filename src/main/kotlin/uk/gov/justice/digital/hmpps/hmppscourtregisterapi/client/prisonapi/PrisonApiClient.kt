@@ -8,7 +8,7 @@ import uk.gov.justice.digital.hmpps.hmppscourtregisterapi.client.prisonapi.dto.A
 
 @Component
 class PrisonApiClient(@Qualifier("prisonApiWebClient") private val webClient: WebClient) {
-  private inline fun <reified T> typeReference() = object : ParameterizedTypeReference<T>() {}
+  private inline fun <reified T : Any> typeReference() = object : ParameterizedTypeReference<T>() {}
 
   fun getCourtAgencies(): List<Agency> = webClient.get()
     .uri {

@@ -20,14 +20,14 @@ class SDRSApiExtension :
     val sdrsApi = SDRSApiMockServer()
   }
 
-  override fun beforeAll(context: ExtensionContext?) {
+  override fun beforeAll(context: ExtensionContext) {
     sdrsApi.start()
   }
 
-  override fun beforeEach(context: ExtensionContext?) {
+  override fun beforeEach(context: ExtensionContext) {
     sdrsApi.resetRequests()
   }
-  override fun afterAll(context: ExtensionContext?) {
+  override fun afterAll(context: ExtensionContext) {
     sdrsApi.stop()
   }
 }

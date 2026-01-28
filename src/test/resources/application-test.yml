@@ -9,13 +9,15 @@ oauth:
   endpoint.url: http://localhost:8090/auth
 
 spring:
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
   datasource:
     url: "jdbc:postgresql://localhost:5432/court_register_db"
     username: "admin"
     password: "admin_password"
-  sql:
-    init:
-      mode: always
   main:
     allow-bean-definition-overriding: true
 
