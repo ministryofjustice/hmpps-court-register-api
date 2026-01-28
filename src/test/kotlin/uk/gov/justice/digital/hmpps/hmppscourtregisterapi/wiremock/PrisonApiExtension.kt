@@ -20,14 +20,14 @@ class PrisonApiExtension :
     val prisonApi = PrisonApiMockServer()
   }
 
-  override fun beforeAll(context: ExtensionContext?) {
+  override fun beforeAll(context: ExtensionContext) {
     prisonApi.start()
   }
 
-  override fun beforeEach(context: ExtensionContext?) {
+  override fun beforeEach(context: ExtensionContext) {
     prisonApi.resetRequests()
   }
-  override fun afterAll(context: ExtensionContext?) {
+  override fun afterAll(context: ExtensionContext) {
     prisonApi.stop()
   }
 }

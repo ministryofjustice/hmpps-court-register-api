@@ -13,8 +13,8 @@ import org.junit.jupiter.api.Test
 import org.mockito.ArgumentMatchers.anyString
 import org.mockito.kotlin.any
 import org.mockito.kotlin.whenever
-import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.http.MediaType
+import org.springframework.test.context.bean.override.mockito.MockitoBean
 import org.springframework.web.reactive.function.BodyInserters
 import software.amazon.awssdk.services.sqs.model.PurgeQueueRequest
 import software.amazon.awssdk.services.sqs.model.ReceiveMessageRequest
@@ -37,16 +37,16 @@ import java.util.function.Consumer
 
 @Suppress("ClassName")
 class CourtResourceTest : IntegrationTestBase() {
-  @MockBean
+  @MockitoBean
   private lateinit var courtRepository: CourtRepository
 
-  @MockBean
+  @MockitoBean
   private lateinit var buildingRepository: BuildingRepository
 
-  @MockBean
+  @MockitoBean
   private lateinit var contactRepository: ContactRepository
 
-  @MockBean
+  @MockitoBean
   private lateinit var courtTypeRepository: CourtTypeRepository
 
   @Nested
