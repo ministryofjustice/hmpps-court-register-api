@@ -191,7 +191,7 @@ class CourtResourceTest : IntegrationTestBase() {
       )
       whenever(courtTypeRepository.findById("YOUTH")).thenReturn(Optional.of(courtType))
 
-      whenever(courtRepository.save(any())).thenReturn(
+      whenever(courtRepository.save(any<Court>())).thenReturn(
         court,
       )
       webTestClient.post()
@@ -258,7 +258,7 @@ class CourtResourceTest : IntegrationTestBase() {
         Optional.of(finalCourt),
       )
       whenever(courtTypeRepository.findById("YOUTH")).thenReturn(Optional.of(youthCourt))
-      whenever(courtRepository.save(any())).thenReturn(
+      whenever(courtRepository.save(any<Court>())).thenReturn(
         finalCourt,
       )
 
