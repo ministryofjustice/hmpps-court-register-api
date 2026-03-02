@@ -28,7 +28,7 @@ dependencies {
   // AWS
   implementation("uk.gov.justice.service.hmpps:hmpps-sqs-spring-boot-starter:6.0.1")
 
-  implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:3.0.1")
+  implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:3.0.2")
   implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2")
 
   testImplementation("org.springframework.security:spring-security-test")
