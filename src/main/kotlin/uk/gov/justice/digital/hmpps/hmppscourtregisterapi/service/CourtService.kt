@@ -13,6 +13,7 @@ import uk.gov.justice.digital.hmpps.hmppscourtregisterapi.resource.CourtDto
 import uk.gov.justice.digital.hmpps.hmppscourtregisterapi.resource.CourtTypeDto
 import uk.gov.justice.digital.hmpps.hmppscourtregisterapi.resource.InsertCourtDto
 import uk.gov.justice.digital.hmpps.hmppscourtregisterapi.resource.UpdateCourtDto
+import java.util.UUID
 
 @Service
 @Transactional
@@ -27,6 +28,14 @@ class CourtService(
   }
 
   fun findByIds(courtIds: List<String>): List<CourtDto> = courtRepository.findAllById(courtIds).map { CourtDto(it) }
+
+  fun findByCpCourtUuid(cpCourtUuid: UUID): CourtDto {
+    val court = courtRepository.findByCpCourtUuid(cpCourtUuid)
+      ?: throw EntityNotFoundException("No court mapped for Common Platform court $cpCourtUuid")
+    return CourtDto(court)
+  }
+
+  fun findByCpCourtUuids(cpCourtUuids: List<UUID>): List<CourtDto> = courtRepository.findByCpCourtUuidIn(cpCourtUuids).map { CourtDto(it) }
 
   fun findAll(activeOnly: Boolean = false): List<CourtDto> {
     if (activeOnly) {

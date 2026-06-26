@@ -15,6 +15,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException
 import org.springframework.web.bind.MissingServletRequestParameterException
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.RestControllerAdvice
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException
 import org.springframework.web.servlet.resource.NoResourceFoundException
 
 @RestControllerAdvice
@@ -70,6 +71,17 @@ class HmppsCourtRegisterApiExceptionHandler {
   fun handleValidationAnyException(e: MethodArgumentNotValidException): ResponseEntity<ErrorResponse> = ResponseEntity
     .status(BAD_REQUEST)
     .body(ErrorResponse(status = BAD_REQUEST, developerMessage = e.message, errors = e.asErrorList())).also { log.info("Method argument not valid Exception: {}", e.message) }
+
+  @ExceptionHandler(MethodArgumentTypeMismatchException::class)
+  fun handleTypeMismatchException(e: MethodArgumentTypeMismatchException): ResponseEntity<ErrorResponse> = ResponseEntity
+    .status(BAD_REQUEST)
+    .body(
+      ErrorResponse(
+        status = BAD_REQUEST,
+        userMessage = "Invalid value for parameter ${e.name}",
+        developerMessage = e.message,
+      ),
+    ).also { log.info("Method argument type mismatch exception: {}", e.message) }
 
   @ExceptionHandler(AuthorizationDeniedException::class)
   fun handleAuthorizationDeniedException(e: AuthorizationDeniedException): ResponseEntity<ErrorResponse> = ResponseEntity

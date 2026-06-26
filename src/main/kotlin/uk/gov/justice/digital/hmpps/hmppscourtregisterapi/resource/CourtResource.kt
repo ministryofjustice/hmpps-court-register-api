@@ -28,6 +28,7 @@ import uk.gov.justice.digital.hmpps.hmppscourtregisterapi.jpa.CourtType
 import uk.gov.justice.digital.hmpps.hmppscourtregisterapi.service.BuildingContactService
 import uk.gov.justice.digital.hmpps.hmppscourtregisterapi.service.CourtBuildingService
 import uk.gov.justice.digital.hmpps.hmppscourtregisterapi.service.CourtService
+import java.util.UUID
 
 // This is a hack to get around the fact that springdocs responses cannot contain generics
 class CourtDtoPage : PageImpl<CourtDto>(mutableListOf<CourtDto>())
@@ -89,6 +90,61 @@ class CourtResource(
   fun getCourtsByIds(
     @Parameter(description = "CourtIDs", example = "ACCRYC", required = true) @RequestParam(required = true) courtIds: List<String>,
   ): List<CourtDto> = courtService.findByIds(courtIds)
+
+  @GetMapping("/cp/multiple")
+  @Operation(
+    summary = "Resolve multiple Common Platform court UUIDs to HMPPS courts",
+    description = "Batch deterministic lookup. Returns the courts that have a confirmed mapping for the supplied " +
+      "Common Platform court UUIDs. UUIDs with no confirmed mapping are simply absent from the result; the caller " +
+      "can identify them by diffing the requested UUIDs against the cpCourtUuid values returned. No name-based " +
+      "fallback is attempted.",
+    responses = [
+      ApiResponse(
+        responseCode = "200",
+        description = "Mapped courts returned (may be fewer than requested, or empty)",
+        content = [Content(mediaType = "application/json", array = ArraySchema(schema = Schema(implementation = CourtDto::class)))],
+      ),
+      ApiResponse(
+        responseCode = "400",
+        description = "One or more malformed Common Platform court UUIDs",
+        content = [Content(mediaType = "application/json", schema = Schema(implementation = ErrorResponse::class))],
+      ),
+    ],
+  )
+  fun getCourtsByCpCourtUuids(
+    @Parameter(description = "Common Platform court UUIDs", example = "faa91bb2-19cb-384b-bcc1-06d31d12cc67", required = true)
+    @RequestParam(required = true)
+    cpCourtUuids: List<UUID>,
+  ): List<CourtDto> = courtService.findByCpCourtUuids(cpCourtUuids)
+
+  @GetMapping("/cp/{cpCourtUuid}")
+  @Operation(
+    summary = "Resolve a Common Platform court UUID to the HMPPS court",
+    description = "Deterministic lookup of the court mapped to a Common Platform court UUID. " +
+      "Returns 404 when the UUID has no confirmed mapping; no name-based fallback is attempted.",
+    responses = [
+      ApiResponse(
+        responseCode = "200",
+        description = "Mapped court returned",
+        content = [Content(mediaType = "application/json", schema = Schema(implementation = CourtDto::class))],
+      ),
+      ApiResponse(
+        responseCode = "400",
+        description = "Malformed Common Platform court UUID",
+        content = [Content(mediaType = "application/json", schema = Schema(implementation = ErrorResponse::class))],
+      ),
+      ApiResponse(
+        responseCode = "404",
+        description = "No confirmed mapping for the supplied Common Platform court UUID",
+        content = [Content(mediaType = "application/json", schema = Schema(implementation = ErrorResponse::class))],
+      ),
+    ],
+  )
+  fun getCourtByCpCourtUuid(
+    @Schema(description = "Common Platform court UUID", example = "faa91bb2-19cb-384b-bcc1-06d31d12cc67", required = true)
+    @PathVariable
+    cpCourtUuid: UUID,
+  ): CourtDto = courtService.findByCpCourtUuid(cpCourtUuid)
 
   @GetMapping("")
   @Operation(
@@ -323,6 +379,11 @@ data class CourtDto(
   val courtDescription: String?,
   @Schema(description = "Type of court with description", required = true) val type: CourtTypeDto,
   @Schema(description = "Whether the court is still active", required = true) val active: Boolean,
+  @Schema(
+    description = "Common Platform court UUID mapped to this court, where a confirmed mapping exists",
+    example = "faa91bb2-19cb-384b-bcc1-06d31d12cc67",
+    required = false,
+  ) val cpCourtUuid: UUID? = null,
   @Schema(description = "List of buildings for this court entity") val buildings: List<BuildingDto> = listOf(),
 ) {
   constructor(court: Court) : this(
@@ -331,6 +392,7 @@ data class CourtDto(
     court.courtDescription,
     CourtTypeDto(court.courtType),
     court.active,
+    court.cpCourtUuid,
     court.buildings.map { BuildingDto(it) },
   )
 }

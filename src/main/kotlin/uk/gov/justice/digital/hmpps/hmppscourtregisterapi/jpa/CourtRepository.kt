@@ -23,6 +23,7 @@ import uk.gov.justice.digital.hmpps.hmppscourtregisterapi.client.prisonapi.dto.A
 import uk.gov.justice.digital.hmpps.hmppscourtregisterapi.client.sdrs.dto.OrganisationUnit
 import uk.gov.justice.digital.hmpps.hmppscourtregisterapi.resource.UpdateBuildingDto
 import java.time.LocalDateTime
+import java.util.UUID
 
 @Repository
 interface CourtRepository :
@@ -30,6 +31,10 @@ interface CourtRepository :
   CrudRepository<Court, String> {
 
   fun findByActiveOrderById(active: Boolean): List<Court>
+
+  fun findByCpCourtUuid(cpCourtUuid: UUID): Court?
+
+  fun findByCpCourtUuidIn(cpCourtUuids: List<UUID>): List<Court>
 
   @Query(
     """
@@ -78,6 +83,9 @@ data class Court(
   var courtType: CourtType,
 
   var active: Boolean,
+
+  @Column(name = "cp_court_uuid")
+  var cpCourtUuid: UUID? = null,
 
   @CreatedDate
   @Column(nullable = false)
