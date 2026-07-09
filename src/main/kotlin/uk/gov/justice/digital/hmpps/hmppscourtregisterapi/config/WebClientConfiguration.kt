@@ -9,10 +9,10 @@ import org.springframework.security.oauth2.client.OAuth2AuthorizedClientManager
 import org.springframework.security.oauth2.client.OAuth2AuthorizedClientProviderBuilder
 import org.springframework.security.oauth2.client.OAuth2AuthorizedClientService
 import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository
-import org.springframework.security.oauth2.client.web.reactive.function.client.ServletOAuth2AuthorizedClientExchangeFilterFunction
 import org.springframework.util.unit.DataSize
 import org.springframework.web.reactive.function.client.ExchangeStrategies
 import org.springframework.web.reactive.function.client.WebClient
+import uk.gov.justice.hmpps.kotlin.auth.authorisedWebClient
 import uk.gov.justice.hmpps.kotlin.auth.healthWebClient
 import java.time.Duration
 
@@ -37,13 +37,10 @@ class WebClientConfiguration(
   fun prisonApiWebClient(authorizedClientManager: OAuth2AuthorizedClientManager): WebClient {
     val size = DataSize.ofMegabytes(16).toBytes().toInt()
     val strategies = ExchangeStrategies.builder().codecs { it.defaultCodecs().maxInMemorySize(size) }.build()
-    val filter = ServletOAuth2AuthorizedClientExchangeFilterFunction(authorizedClientManager)
-    filter.setDefaultClientRegistrationId("hmpps-api")
     return WebClient.builder()
       .baseUrl(prisonApiUri)
       .exchangeStrategies(strategies)
-      .filter(filter)
-      .build()
+      .authorisedWebClient(authorizedClientManager, registrationId = "hmpps-api", url = prisonApiUri)
   }
 
   @Bean
