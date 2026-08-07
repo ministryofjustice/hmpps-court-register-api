@@ -46,3 +46,9 @@ sdrs:
 prison:
   api:
     url: http://localhost:8333
+
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: true
