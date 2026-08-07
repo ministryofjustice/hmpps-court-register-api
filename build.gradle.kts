@@ -35,7 +35,7 @@ dependencies {
   testImplementation("uk.gov.justice.service.hmpps:hmpps-kotlin-spring-boot-starter-test:2.5.0")
   testImplementation("org.springframework.boot:spring-boot-starter-webflux-test")
   testImplementation("org.wiremock:wiremock-standalone:3.13.2")
-  testImplementation("net.javacrumbs.json-unit:json-unit-assertj:5.1.2")
+  testImplementation("net.javacrumbs.json-unit:json-unit-assertj:6.0.1")
   testImplementation("org.testcontainers:localstack:1.21.4")
   testImplementation("org.testcontainers:postgresql:1.21.4")
   testImplementation("org.awaitility:awaitility-kotlin:4.3.0")
