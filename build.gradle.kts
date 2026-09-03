@@ -9,7 +9,7 @@ configurations {
 }
 
 dependencies {
-  implementation("uk.gov.justice.service.hmpps:hmpps-kotlin-spring-boot-starter:3.0.0")
+  implementation("uk.gov.justice.service.hmpps:hmpps-kotlin-spring-boot-starter:3.0.1")
   implementation("org.springframework.boot:spring-boot-starter-webflux")
   implementation("org.springframework.boot:spring-boot-starter-data-jpa")
   implementation("org.springframework.boot:spring-boot-starter-flyway")
@@ -25,13 +25,13 @@ dependencies {
   implementation("javax.xml.bind:jaxb-api:2.3.1")
 
   // AWS
-  implementation("uk.gov.justice.service.hmpps:hmpps-sqs-spring-boot-starter:7.4.0")
+  implementation("uk.gov.justice.service.hmpps:hmpps-sqs-spring-boot-starter:7.4.1")
 
   implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:3.1.0")
   implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.11.0")
 
   testImplementation("org.springframework.security:spring-security-test")
-  testImplementation("uk.gov.justice.service.hmpps:hmpps-kotlin-spring-boot-starter-test:3.0.0")
+  testImplementation("uk.gov.justice.service.hmpps:hmpps-kotlin-spring-boot-starter-test:3.0.1")
   testImplementation("org.springframework.boot:spring-boot-starter-webflux-test")
   testImplementation("org.wiremock:wiremock-standalone:3.13.2")
   testImplementation("net.javacrumbs.json-unit:json-unit-assertj:6.2.0")
