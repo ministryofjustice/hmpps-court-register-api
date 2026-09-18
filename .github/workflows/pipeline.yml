@@ -53,7 +53,7 @@ jobs:
     secrets: inherit
     with:
       localstack-tag: "3"
-      postgres-tag: "16"
+      postgres-tag: "18"
       postgres-db: court_register_db
       postgres-username: admin
       postgres-password: admin_password
