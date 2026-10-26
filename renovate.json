@@ -19,12 +19,10 @@
     },
     {
       "matchManagers": ["github-actions"],
-      "matchFileNames": [
-        "**/.github/workflows/**/*.ya?ml",
-        "**/.github/actions/**/*.ya?ml"
-        ],
-      "minimumReleaseAge": "7 days",
-      "pinDigests": true
+      "matchFileNames": ["**/.github/workflows/**/*.ya?ml"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "enabled": false
     }
-  ]
+  ],
+  "platformCommit": "enabled"
 }
