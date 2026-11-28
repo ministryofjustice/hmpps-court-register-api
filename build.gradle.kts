@@ -29,7 +29,7 @@ dependencies {
   implementation("org.springframework.boot:spring-boot-starter-oauth2-client")
   // Temporarily pin swagger-ui for dompurify issues CVE-2026-11680(2-4)
   constraints {
-    implementation("org.webjars:swagger-ui:5.34.1")
+    implementation("org.webjars:swagger-ui:5.35.1")
   }
 
   runtimeOnly("org.flywaydb:flyway-database-postgresql")
@@ -39,16 +39,16 @@ dependencies {
   implementation("javax.xml.bind:jaxb-api:2.3.1")
 
   // AWS
-  implementation("uk.gov.justice.service.hmpps:hmpps-sqs-spring-boot-starter:7.4.1")
+  implementation("uk.gov.justice.service.hmpps:hmpps-sqs-spring-boot-starter:7.6.0")
 
-  implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:3.2.0")
+  implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:3.2.1")
   implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.11.0")
 
   testImplementation("org.springframework.security:spring-security-test")
   testImplementation("uk.gov.justice.service.hmpps:hmpps-kotlin-spring-boot-starter-test:3.1.0")
   testImplementation("org.springframework.boot:spring-boot-starter-webflux-test")
   testImplementation("org.wiremock:wiremock-standalone:3.13.2")
-  testImplementation("net.javacrumbs.json-unit:json-unit-assertj:6.4.0")
+  testImplementation("net.javacrumbs.json-unit:json-unit-assertj:6.4.1")
   testImplementation("org.testcontainers:localstack:1.21.4")
   testImplementation("org.testcontainers:postgresql:1.21.4")
   testImplementation("org.awaitility:awaitility-kotlin:4.3.0")
@@ -56,7 +56,7 @@ dependencies {
   testImplementation("io.jsonwebtoken:jjwt-impl:0.13.0")
   testImplementation("io.jsonwebtoken:jjwt-jackson:0.13.0")
   testImplementation("org.mockito:mockito-inline:5.2.0")
-  testImplementation("io.swagger.parser.v3:swagger-parser:2.1.48") {
+  testImplementation("io.swagger.parser.v3:swagger-parser:2.1.49") {
     exclude(group = "io.swagger.core.v3")
     exclude(group = "io.swagger.parser.v3", module = "swagger-parser-v2-converter")
   }
